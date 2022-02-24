@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+{% extends "hrms/employeedashboard/base.html"%}
+
+
+
+
+{% block body_block %}
+
+
+
+  <!-- Beginning of Main Body -->
+
+  <main>
+    <h1> Dashboard </h1>
+
+    <div class="insights">
+
+      <!-- BEGINNING OF CURRENT PROJECT/TASKS -->
+        <div class="employee-analytics">
+          <span class="material-icons-sharp"> stacked_line_chart </span>
+          <div class="middle">
+              <div class="left">
+                  <h3> Current project </h3>
+              </div>
+              <div class="progress">
+                  <svg>
+                      <circle cx="38" CY="38" R='36' ></circle>
+                  </svg>
+                  <div class="number">
+                      <p> weight </p>
+                  </div>
+              </div>
+          </div>
+          <a class="text-muted" href="#"> see more </a>
+        </div>
+
+        <!-- END OF CURRENT PROJECT/TASKS - -->
+
+        {% for project in projects %}    
+      <!-- BEGINNING OF CURRENT PROJECT/TASKS - -->
+      <div class="employee-analytics">
+          <span class="material-icons-sharp"> bar_chart </span>
+          <div class="middle">
+
+
+              <div class="left">
+                  <!-- <h3> Dispense memo </h3> -->
+                  <!-- <h3> {{project.kpd}} </h3> -->
+
+                  <h3>P:{{project.date.today.month}}:{{project.date.today.year}} </h3>
+
+              </div>
+
+              <!-- <div class="left">
+               
+
+                <h3> {{project.date}} </h3>
+            </div> -->
+              <div class="progress">
+                  <svg>
+                      <circle cx="38" CY="38" R='36' ></circle>
+                  </svg>
+                  <div class="number">
+                      <!-- <p>20</p> -->
+                      <p> {{project.weight }} </p>
+                  </div>
+              </div>
+          </div>
+          <a class="text-muted" href=" {% url "hrms:project_detail" pk=project.skpd_id %} "> see more </a>
+        </div>
+
+        <!-- END OF CURRENT PROJECT/TASKS - -->
+         {% endfor %}
+
+        <div class="employee-analytics">
+          <span class="material-icons-sharp"> stacked_line_chart </span>
+          <div class="middle">
+              <div class="left">
+                  <h3> Current project </h3>
+              </div>
+              <div class="progress">
+                  <svg>
+                      <circle cx="38" CY="38" R='36' ></circle>
+                  </svg>
+                  <div class="number">
+                      <p> weight </p>
+                  </div>
+              </div>
+          </div>
+          <a class="text-muted" href="#"> see more </a>
+        </div>
+
+        <div class="employee-analytics">
+          <span class="material-icons-sharp"> stacked_line_chart </span>
+          <div class="middle">
+              <div class="left">
+                  <h3> Current project </h3>
+              </div>
+              <div class="progress">
+                  <svg>
+                      <circle cx="38" CY="38" R='36' ></circle>
+                  </svg>
+                  <div class="number">
+                      <p> weight </p>
+                  </div>
+              </div>
+          </div>
+          <a class="text-muted" href="#"> see more </a>
+        </div>
+
+        <div class="employee-analytics">
+          <span class="material-icons-sharp"> stacked_line_chart </span>
+          <div class="middle">
+              <div class="left">
+                  <h3> Current project </h3>
+              </div>
+              <div class="progress">
+                  <svg>
+                      <circle cx="38" CY="38" R='36' ></circle>
+                  </svg>
+                  <div class="number">
+                      <p> weight </p>
+                  </div>
+              </div>
+          </div>
+          <a class="text-muted" href="#"> see more </a>
+        </div>
+        <div class="employee-analytics">
+          <span class="material-icons-sharp"> stacked_line_chart </span>
+          <div class="middle">
+              <div class="left">
+                  <h3> Current project </h3>
+              </div>
+              <div class="progress">
+                  <svg>
+                      <circle cx="38" CY="38" R='36' ></circle>
+                  </svg>
+                  <div class="number">
+                      <p> weight </p>
+                  </div>
+              </div>
+          </div>
+          <a class="text-muted" href="#"> see more </a>
+
+         <!-- END OF CURRENT PROJECT/TASKS - -->
+
+    </div>
+</main>
+ <!-- End of Main Body -->
+
+
+ {% endblock %}
+
+
+
+
+
+
+
