@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-(2s$)x_+1k5q%=%3e*p$dn#fykt0kllnfgoy7u8*j#w2*r3)vm
 DEBUG = True
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['labadekpi.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['labadetestkpi.herokuapp.com','127.0.0.1']
 
 
 # Application definition
