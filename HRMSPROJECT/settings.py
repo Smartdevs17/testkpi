@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
 
@@ -88,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'd96a04ppommc2d' ,
         'USER': 'ofwozjuoydlkwh',
-        'PASSWORD': 'f47739e1177e72394ee8754c97d9da3180179b7ef7',
+        'PASSWORD': 'ff4f716335d3ee33edd145f47739e1177e72394ee8754c97d9da3180179b7ef7',
         'HOST': 'ec2-34-233-157-189.compute-1.amazonaws.com',
         'PORT':  5432
     }
