@@ -302,7 +302,7 @@ class Employee_Evaluation(CreateView):
 
 
 class Employee_View(LoginRequiredMixin,DetailView):
-    # template_name = 'hrms/employeedashboard/employeedashboard.html'
+    template_name = 'hrms/employeedashboard/employeedashboard.html'
     context_object_name = 'employee'
     login_url = 'hrms:login'
     

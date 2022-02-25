@@ -48,7 +48,8 @@ class Employee(models.Model):
     #     return self.user
         
     def get_absolute_url(self):
-        return reverse("hrms:employee_view", kwargs={"pk": self.user})    
+        return reverse("hrms:employee_login")     
+        # return reverse("hrms:employee_view", kwargs={"pk": self.user})   
 
 
 class EmployeeType(models.Model):
@@ -78,7 +79,7 @@ class Department(models.Model):
     dept_name = models.CharField(max_length=70, null=False, blank=False)
     head_of_dept = models.ForeignKey(Employee, on_delete=models.CASCADE)
     # head_of_dept = models.CharField(max_length=15,blank=True,null=True)
-    description = models.TextField(max_length=1000,null=True,blank=True, default='No Description')
+    description = models.TextField(max_length=1000,null=True,blank=True, default='')
     sbu_id = models.ForeignKey(SBU_Directorate,on_delete=models.SET_NULL, null=True)
     
 
@@ -99,7 +100,7 @@ class Unit(models.Model):
 
 class Designation(models.Model):
     design_id = models.CharField(max_length=70, primary_key=True,default='design'+str(random.randrange(100,999,1)))
-    designation = models.TextField(max_length=1000,null=True,blank=True, default='No Description')
+    designation = models.TextField(max_length=1000,null=True,blank=True, default='')
 
     def __str__(self):
         return self.design_id

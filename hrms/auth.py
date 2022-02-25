@@ -34,7 +34,7 @@ class Register (CreateView):
     # Need to find a way to add the user_form
     template_name = 'hrms/registrations/register.html'
     
-    success_url = reverse_lazy('hrms:login')
+    success_url = reverse_lazy('hrms:employee_login')
     
 class Login_View(LoginView):
     model = get_user_model()
@@ -42,7 +42,7 @@ class Login_View(LoginView):
     template_name = 'hrms/registrations/login.html'
 
     def get_success_url(self):
-        url = resolve_url('hrms:index')
+        url = resolve_url('hrms:employee_dashboard')
         return url
 
 class Logout_View(View):
