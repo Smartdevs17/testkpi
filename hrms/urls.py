@@ -33,6 +33,7 @@ urlpatterns = [
     path('manager_dashboard/project_rating/<int:pk>/view/', views.Rating_View.as_view(), name='rating_view'),
     path('manager/kpi_evaluation/', views.Evaluation_View.as_view(), name='evaluation'),
     path('manager/report/', views.Report_View.as_view(), name='manager_report'),
+    path('manager_dashboard/members', views.Manager_Employee_View.as_view(), name='manager_members'),
     # path('manager_dashboard/<int:pk>/view/', views.Manager_Dashboard.as_view(), name='manager_dashboard'),
     path('manager_dashboard/settings', views.Manager_Setting.as_view(), name='manager_setting'),
     path('manager_logout/', views.Manager_Logout_View.as_view(), name='manager_logout'),

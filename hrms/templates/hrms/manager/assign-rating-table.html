@@ -27,48 +27,45 @@
                     <span class="material-icons-sharp">close </span>
                 </div>
             </div>
-
             <div class="sidebar">
-                 <a href="{% url "hrms:manager_dashboard"%}" class="active">
-                    <span class="material-icons-sharp"> dashboard </span>
-                    <h3> Dashboard </h3>
-                 </a>
-                 <a href="#">
-                    <span class="material-icons-sharp"> person_outline </span>
-                    <h3> Members </h3>
-                 </a>
-                 <a href=" {% url "hrms:evaluation"%} ">
-                    <span class="material-icons-sharp"> speaker_group </span>
-                    <h3> KPI Evalutation </h3>
-                 </a>
-                 <a href=" {% url "hrms:manager_report"%} ">
-                    <span class="material-icons-sharp"> settings </span>
-                    <h3> Report </h3>
-                 </a>
-                 <a href=" {% url "hrms:assign_rating"%} ">
-                    <span class="material-icons-sharp"> insights </span>
-                    <h3> Employee Ratings </h3>
-                 </a>
-                 <a href=" {% url "hrms:manager_message"%} ">
-                    <span class="material-icons-sharp"> question_answer </span>
-                    <h3> Messages </h3>
-                    <span class="message-count"> {{staff_total}} </span>
-                 </a>
-
-                 <a href=" {% url "hrms:create_project"%} ">
-                    <span class="material-icons-sharp"> inventory </span>
-                    <h3> Projects </h3>
-                 </a>
-                 <a href=" {% url "hrms:manager_setting"%} ">
-                    <span class="material-icons-sharp"> settings </span>
-                    <h3> Settings </h3>
-                 </a>
-            
-                 <a href=" {% url "hrms:manager_logout" %} ">
-                    <span class="material-icons-sharp"> logout </span>
-                    <h3> Logout </h3>
-                 </a>
-            </div>
+                <a href="#" class="active">
+                   <span class="material-icons-sharp"> dashboard </span>
+                   <h3> Dashboard </h3>
+                </a>
+                <a href="{% url "hrms:manager_members"%}">
+                   <span class="material-icons-sharp"> person_outline </span>
+                   <h3> Members </h3>
+                </a>
+                <a href=" {% url "hrms:evaluation"%} ">
+                   <span class="material-icons-sharp"> speaker_group </span>
+                   <h3> KPI Evalutation </h3>
+                </a>
+                <a href=" {% url "hrms:manager_report"%} ">
+                   <span class="material-icons-sharp"> settings </span>
+                   <h3> Report </h3>
+                </a>
+                <a href=" {% url "hrms:assign_rating"%} ">
+                   <span class="material-icons-sharp"> insights </span>
+                   <h3> Employee Ratings </h3>
+                </a>
+                <a href=" {% url "hrms:manager_message"%} ">
+                   <span class="material-icons-sharp"> question_answer </span>
+                   <h3> Messages </h3>
+                   <span class="message-count"> {{task_total}} </span>
+                </a>
+   
+                <a href=" {% url "hrms:create_project"%} ">
+                   <span class="material-icons-sharp"> inventory </span>
+                   <h3> Assign Deliverables </h3>
+                </a>
+                
+       
+           
+                <a href=" {% url "hrms:manager_logout" %} ">
+                   <span class="material-icons-sharp"> logout </span>
+                   <h3> Logout </h3>
+                </a>
+           </div>
         </aside>
          <!-- End of Aside or Side Bar -->
 

@@ -36,7 +36,7 @@
                         <span class="material-icons-sharp"> dashboard </span>
                         <h3> Dashboard </h3>
                      </a>
-                     <a href="#">
+                     <a href="{% url "hrms:manager_members"%}">
                         <span class="material-icons-sharp"> person_outline </span>
                         <h3> Members </h3>
                      </a>
@@ -60,14 +60,10 @@
     
                      <a href="#">
                         <span class="material-icons-sharp"> inventory </span>
-                        <h3> Create Project </h3>
+                        <h3> Assign Deliverables</h3>
                      </a>
-                     <a href="#">
-                        <span class="material-icons-sharp"> settings </span>
-                        <h3> Settings </h3>
-                     </a>
-                
-                     <a href=" {% url "hrms:logout" %} ">
+
+                     <a href=" {% url "hrms:manager_logout" %} ">
                         <span class="material-icons-sharp"> logout </span>
                         <h3> Logout </h3>
                      </a>
@@ -82,7 +78,7 @@
               <div class="login-container">
                 <p class="title"> Deliverables </p>
                 <div class="separator"></div>
-                <p class="welcome-message"> Create and Assign project and its deliverabes to available employees </p>
+                <p class="welcome-message"> Create and assign  deliverabes to available employees </p>
     
                 <form method="POST" class="login-form">
                     {{form.errors}}

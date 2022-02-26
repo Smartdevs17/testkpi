@@ -34,7 +34,7 @@
                         <span class="material-icons-sharp"> dashboard </span>
                         <h3> Dashboard </h3>
                      </a>
-                     <a href="#">
+                     <a href="{% url "hrms:manager_members"%}">
                         <span class="material-icons-sharp"> person_outline </span>
                         <h3> Members </h3>
                      </a>
@@ -58,12 +58,9 @@
     
                      <a href=" {% url "hrms:create_project"%} ">
                         <span class="material-icons-sharp"> inventory </span>
-                        <h3> Create Projects </h3>
+                        <h3> Assign Delivables </h3>
                      </a>
-                     <a href="#">
-                        <span class="material-icons-sharp"> settings </span>
-                        <h3> Settings </h3>
-                     </a>
+
                 
                      <a href=" {% url "hrms:logout" %} ">
                         <span class="material-icons-sharp"> logout </span>
@@ -85,7 +82,7 @@
                     <span class="material-icons-sharp"> stacked_line_chart </span>
                     <div class="middle">
                         <div class="left">
-                            <h3> Logistics </h3>
+                            <h3> {{manager.dept_name}} </h3>
                             <h5> No of Members </h5>
                         </div>
                         <div class="progress">
@@ -93,117 +90,67 @@
                                 <circle cx="38" CY="38" R='36' ></circle>
                             </svg>
                             <div class="number">
-                                <p>100</p>
+                                <!-- <p>100</p> -->
+                                {{staff_total}}
                             </div>
                         </div>
                     </div>
-                    <small class="text-muted"> Department Count </small>
+                    <small class="text-muted"> Till Date </small>
                   </div>
-
+  
                   <!-- END OF Quick details -->
-
+  
                   
-               
-
+                <!-- BEGINNING OF EMPLOYEE ANALYTICS -->
+                <div class="employee-analytics">
+                    <span class="material-icons-sharp"> bar_chart </span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3> Projects </h3>
+                            <h5> No of Projects </h5>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" CY="38" R='36' ></circle>
+                            </svg>
+                            <div class="number">
+                                <!-- <p>30</p> -->
+                                {{skpd_count}}
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted"> project count </small>
+                  </div>
+  
                   <!-- END OF EMPLOYEE ANALYTICS -->
-
-                  
-                <!-- BEGINNING OF PROJECT ANALYTICS -->
-              
-
-                  <!-- END OF PROJECT ANALYTICS -->
+  
               </div>
 
               <div class="employee-quick-details">
                   <h2> All Members </h2>
                   <table>
-                      <thead>
-                          <tr>
-                              <th> Employee Name </th>
-                              <th> Employee Last name </th>
-                              <th> Employee ID </th>
-                              <th> Employee Status </th>
-                              <th></th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                        {% for task in tasks %}
+                    <thead>
                         <tr>
-                            <td> {{task.employee}} </td>
-                            <td> {{task.name}} </td>
-                            <td> {{task.mkpd_id}} </td>
-                            <td> {{task.approved}} </td>
-                            <td> {{task.week}} &emsp;<span><a href="{% url 'hrms:rating_view' pk=task.mkpd_id %}" class="btn btn-sm btn-info">View</a></span> </td>
+                            <th> Employee name </th>
+                            <th> Employee Type </th>
+                            <th> Station </th>
+                            <th> Unit </th>
+                            <th> Position</th>
+                            <th></th>
                         </tr>
-                        <!-- <tr>
-                          <td> David adeleke </td>
-                          <td>MID34 Daily Delivery </td>
-                          <td> 202201 </td>
-                          <td class="warning"> Good </td>
-                      </tr>
-                      <tr>
-                          <td> Kenneth ato </td>
-                          <td>MID34 Daily Delivery </td>
-                          <td> 202201 </td>
-                          <td class="danger"> Needs Improvement </td>
-                      </tr>
-                      <tr>
-                          <td> Angel ogbonna </td>
-                          <td>MID34 Daily Delivery </td>
-                          <td> 202201 </td>
-                          <td class="success"> Excellent </td>
-                      </tr>
-                      <tr>
-                          <td> John doe </td>
-                          <td>MID34 Daily Delivery </td>
-                          <td> 202201 </td>
-                          <td class="success"> Excellent </td>
-                      </tr>
-                      <tr>
-                          <td> Hillary ken </td>
-                          <td>MID34 Daily Delivery </td>
-                          <td> 202201 </td>
-                          <td> class="warning"> Good </td>
-                      </tr> -->
+                    </thead>
+                      <tbody>
+                        {% for staff in staffs %}
+                        <tr>
+                            <td> {{staff.first_name}} {{staff.last_name}} </td>
+                            <td> {{staff.employee_type.employee_type}} </td>
+                            <td> {{staff.station.station_name}} </td>
+                            <td> {{staff.unit.unit_id}} </td>
+                            <td> {{staff.position.position}} </td>
+                        </tr>
+           
                       {% endfor %}
                     </tbody>
-                          <tr>
-                              <td> Joshua Abanjo </td>
-                              <td> Hillary </td>
-                              <td> 202201 </td>
-                              <td class="success"> At work </td>
-                          </tr>
-                          <tr>
-                            <td> Joshua Abanjo </td>
-                            <td> Hillary </td>
-                            <td> 202201 </td>
-                            <td class="warning" > On Leave </td>
-                        </tr>
-                        <tr>
-                            <td> Joshua Abanjo </td>
-                            <td> Hillary </td>
-                            <td> 202201 </td>
-                            <td class="warning"> On Leave </td>
-                        </tr>
-                        <tr>
-                            <td> Angel ogbonna </td>
-                            <td> Hillary </td>
-                            <td> 202201 </td>
-                            <td class="success"> At work </td>
-                        </tr>
-                        <tr>
-                            <td> John doe </td>
-                            <td> Hillary </td>
-                            <td> 202201 </td>
-                            <td class="warning" > On Leave </td>
-                        </tr>
-                        <tr>
-                            <td> Joshua Abanjo </td>
-                            <td> Hillary </td>
-                            <td> 202201 </td>
-                            <td class="success"> At work </td>
-                        </tr>
-                      </tbody>
                   </table>
               </div>
           </main>
@@ -219,14 +166,16 @@
                     <span class="material-icons-sharp"> dark_mode </span>
                    </div>
                    <div class="profile">
-                       <div class="info">
-                           <p>Hey, <b>Anthony</b></p>
-                           <small class="text-muted">Manager</small>
-                       </div>
-                       <div class="profile-photo">
-                        <img src="./images/profile-1.jpg" alt="">
-                       </div>
-                   </div>
+                    <div class="info">
+                        <!-- <p>Hey, <b>Anthony</b></p> -->
+                        <p>Hey, <b> {{manager.head_of_dept.first_name}} </b></p>
+                        <small class="text-muted">Manager</small>
+                    </div>
+                    <div class="profile-photo">
+                     <img src=" {{manager.head_of_dept.thumb.url}} " alt="">
+
+                    </div>
+                </div>
                </div>
 
            </div>

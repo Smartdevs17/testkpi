@@ -95,6 +95,7 @@ class Admin_Setting(LoginRequiredMixin,SuperuserRequiredMixin,ListView):
         context['design_total'] = Designation.objects.all().count()
         context['employeetype_total'] = EmployeeType.objects.all().count()
         context['kpiscore_total'] = KPIScoreRange.objects.all().count()
+        context['kpd_total'] = KPD.objects.all().count()
         return context
 
 

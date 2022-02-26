@@ -116,17 +116,26 @@ class Manager_Message_View(LoginRequiredMixin,ListView):
         context['tasks'] = MKPD.objects.order_by('-mkpd_id')
         context['projects'] = KPI_Evalutation.objects.order_by('id')
         return context
-
-
-# #   Create Project
-# class Create_Project_View(LoginRequiredMixin,CreateView):
-#     model = SKPD
-#     form_class  = SKPDForm(user=user)
-#     manager_url = 'hrms:manager_login'
-#     template_name = 'hrms/manager/create-project.html'
-#     # context["user"] = user
     
-#     success_url = reverse_lazy('hrms:manager_dashboard')
+    
+# Manager Board   
+class Manager_Employee_View(LoginRequiredMixin,ListView):
+    template_name = 'hrms/manager/members.html'
+    manager_url = 'hrms:manager_login'
+    model = get_user_model()
+    context_object_name = 'qset'            
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs) 
+        context['task_total'] = MKPD.objects.all().count()
+        context['skpd_count'] = SKPD.objects.all().count()
+        user = get_object_or_404(Department,head_of_dept__user=self.request.user)
+        context["manager"] = user
+        context['staff_total'] = Employment.objects.filter(department=user).count()
+        context["staffs"] = Employment.objects.filter(department=user)
+        context['tasks'] = MKPD.objects.order_by('-mkpd_id')
+        context['projects'] = KPI_Evalutation.objects.order_by('id')
+        return context
+
 
 
 #   Create Project
