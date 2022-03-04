@@ -55,6 +55,7 @@ MIDDLEWARE = [
 
 ]
 
+
 ROOT_URLCONF = 'HRMSPROJECT.urls'
 
 TEMPLATES = [
@@ -139,6 +140,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 # STATICFILES_DIRS = [
 #     STATIC_DIR
 # ]
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 LOGIN_REDIRECT_URL = 'hrms:dashboard'
 #LOGIN_URL = 'hrms:login'
 MEDIA_URL = '/media/' #This is just for url i.e https://l.me/media/l.jpg
