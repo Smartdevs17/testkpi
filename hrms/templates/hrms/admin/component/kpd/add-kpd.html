@@ -18,35 +18,36 @@
               <form method="POST" class="login-form">
                   {% csrf_token%}
                   {{form.errors}}
-                  <h3>Period</h3>
-                  <div class="form-control">
-                      {{form.period}}
-                  </div>
                   <h3>SBU ID</h3>
                   <div class="form-control">
                       {{form.sub_id}}
+                      <i class="fas fa-address-book"></i>
                   </div>
                   <h3>Department ID</h3>
                   <div class="form-control">
                       <!-- <input type="text" placeholder="Department Name "> -->
                       {{form.dept_id}}
+                      <i class="fas fa-address-book"></i>
                   </div>
                   <h3>Unit ID</h3>
                   <div class="form-control">
                       <!-- <input type="text" placeholder="Department Name "> -->
                       {{form.unit_id}}
+                      <i class="fas fa-address-book"></i>
                   </div>
 
                   <h3>KPD</h3>
                   <div class="form-control">
                     <!-- <input type="text" placeholder="Department Name "> -->
                     {{form.kpd}}
+                    <i class="fas fa-address-book"></i>
                 </div>
                 
                 <h3>Description</h3>
                   <div class="form-control">
                       <!-- <input type="text" placeholder="Department Name "> -->
                       {{form.description}}
+                      <i class="fas fa-address-book"></i>
                   </div>
   
                   <div class="button-container">

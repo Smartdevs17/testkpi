@@ -108,11 +108,11 @@ class Directorate_Update(LoginRequiredMixin,UpdateView):
 class Directorate_Delete(LoginRequiredMixin,DeleteView):
     template_name = 'hrms/admin/component/sbu/sbu-delete.html'
     model = SBU_Directorate
+    context_object_name = "sbu"
     login_url = 'hrms:admin_login'
     
     
     success_url = reverse_lazy('hrms:sbu_all')
-    pass
 
 
 #Department views
@@ -155,7 +155,7 @@ class Department_Delete(LoginRequiredMixin,DeleteView):
     template_name = 'hrms/admin/component/dept/dept-delete.html'
     model = Department
     login_url = 'hrms:admin_login'
-    
+    context_object_name="dept"  
     
     success_url = reverse_lazy('hrms:dept_all')
 
@@ -199,7 +199,7 @@ class Unit_Delete(LoginRequiredMixin,DeleteView):
     template_name = 'hrms/admin/component/unit/unit-delete.html'
     model = Unit
     login_url = 'hrms:admin_login'
-    
+    context_object_name = "unit"
     
     success_url = reverse_lazy('hrms:unit_all')
     pass
@@ -246,7 +246,8 @@ class Station_Delete(LoginRequiredMixin,DeleteView):
     template_name = 'hrms/admin/component/station/station-delete.html'
     model = Station
     login_url = 'hrms:admin_login'
-    
+    context_object_name = "station"
+ 
     
     success_url = reverse_lazy('hrms:station_all')
 
@@ -294,45 +295,10 @@ class Designation_Delete(LoginRequiredMixin,DeleteView):
     template_name = 'hrms/admin/component/design/design-delete.html'
     model = Designation
     login_url = 'hrms:admin_login'
-    
+    context_object_name = "design"
+   
     
     success_url = reverse_lazy('hrms:design_all')
-    pass
-
-
-
-# #GradeLevel views
-# class GradeLevel_Detail(LoginRequiredMixin, ListView):
-#     context_object_name = 'employees'
-#     template_name = 'hrms/department/single.html'
-#     login_url = 'hrms:login'
-#     def get_queryset(self): 
-#         queryset = GradeLevel.objects.filter(department=self.kwargs['pk'])
-#         return queryset
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context["dept"] = Designation.objects.get(pk=self.kwargs['pk']) 
-#         return context
-    
-# class GradeLevel_New (LoginRequiredMixin,CreateView):
-#     model = GradeLevel
-#     template_name = 'hrms/admin/component/add-gradelevel.html'
-#     form_class = GradeLevelForm
-#     login_url = 'hrms:manager_login'
-
-#     success_url = reverse_lazy('hrms:admin_setting')
-
-# class GradeLevel_Update(LoginRequiredMixin,UpdateView):
-#     model = GradeLevel
-#     template_name = 'hrms/department/edit.html'
-#     form_class = GradeLevelForm
-#     login_url = 'hrms:login'
-#     success_url = reverse_lazy('hrms:dashboard')
-
-
-# class GradeLevel_Delete(LoginRequiredMixin,DeleteView):
-#     pass
 
 
 #Position views
@@ -375,10 +341,10 @@ class Position_Delete(LoginRequiredMixin,DeleteView):
     template_name = 'hrms/admin/component/position/position-delete.html'
     model = Position
     login_url = 'hrms:admin_login'
+    context_object_name = "position"
     
     
     success_url = reverse_lazy('hrms:position_all')
-    pass
 
 
 
@@ -425,7 +391,7 @@ class Bank_Delete(LoginRequiredMixin,DeleteView):
     template_name = 'hrms/admin/component/bank/bank_delete.html'
     model = Bank
     login_url = 'hrms:admin_login'
-    
+    context_object_name = "bank"
     
     success_url = reverse_lazy('hrms:bank_all')
     
@@ -475,7 +441,7 @@ class KPD_Delete(LoginRequiredMixin,DeleteView):
     template_name = 'hrms/admin/component/kpd/kpd-delete.html'
     model = KPD
     login_url = 'hrms:admin_login'
-    
+    context_object_name = "kpd"   
     
     success_url = reverse_lazy('hrms:kpd_all')
 
@@ -520,7 +486,7 @@ class KPISR_Delete(LoginRequiredMixin,DeleteView):
     template_name = 'hrms/admin/component/kpi/kpiSR-delete.html'
     model = KPIScoreRange
     login_url = 'hrms:admin_login'
-    
+    context_object_name = "kpisr"   
     
     success_url = reverse_lazy('hrms:kpisr_all')
     pass
@@ -566,10 +532,10 @@ class KPISP_Delete(LoginRequiredMixin,DeleteView):
     template_name = 'hrms/admin/component/kpi/kpiSP-delete.html'
     model = KPIScorePenalty
     login_url = 'hrms:admin_login'
-    
+    context_object_name = "kpisp"  
     
     success_url = reverse_lazy('hrms:kpisp_all')
-    pass
+    
 
 #Employmentviews
 class Employment_All(LoginRequiredMixin, ListView):
@@ -610,7 +576,7 @@ class Employment_Delete(LoginRequiredMixin,DeleteView):
     template_name = 'hrms/admin/component/employment/employment-delete.html'
     model = Employment
     login_url = 'hrms:admin_login'
-    
+    context_object_name = "employ" 
     
     success_url = reverse_lazy('hrms:employment_all')
 

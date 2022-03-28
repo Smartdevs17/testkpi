@@ -71,7 +71,7 @@ class EmployeeType(models.Model):
         return self.employeetype
 
     def get_absolute_url(self):
-        return reverse("hrms:employeetype_detail", kwargs={"pk": self.employee_type_id})
+        return reverse("hrms:employeetype_detail", kwargs={"pk": self.employeetype_id})
 
 class SBU_Directorate(models.Model):
     sbu_id =  models.CharField(max_length=70,primary_key=True,default='sub'+str(random.randrange(100,999,1)))
@@ -81,10 +81,11 @@ class SBU_Directorate(models.Model):
 
     def __str__(self):
         return self.sbu_name
-    
-    def get_absolute_url(self):
-        return reverse("hrms:sbu_detail", kwargs={"pk": self.sbu_id})
 
+
+    def get_absolute_url(self):
+        return reverse("hrms:sbu_name", kwargs={"pk": self.sbu_id})
+    
 class Department(models.Model):
     dept_id = models.CharField(max_length=70, primary_key=True)
     dept_name = models.CharField(max_length=70, null=False, blank=False)
@@ -108,6 +109,8 @@ class Unit(models.Model):
     def __str__(self):
         return self.unit_name
 
+    def get_absolute_url(self):
+        return reverse("hrms:dept_detail", kwargs={"pk": self.unit_id})
 class Designation(models.Model):
     design_id = models.CharField(max_length=70, primary_key=True,default='design'+str(random.randrange(100,999,1)))
     designation = models.TextField(max_length=1000,null=True,blank=True, default='No Description')
@@ -174,7 +177,9 @@ class Employment(models.Model):
 
     def __str__(self):
         return self.employee.first_name + " " + self.employee.last_name
-
+    
+    def get_absolute_url(self):
+        return reverse("hrms:employ_detail", kwargs={"pk": self.employ_id})
 class Kin(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
@@ -192,7 +197,7 @@ class Kin(models.Model):
 
 
 class KPD(models.Model):
-    period =  models.DateField(max_length=70,choices=[ (i, "P:"+ str(i.month)+":"+str(i.year)) for i in date_period],default="")
+    period =  models.DateField(max_length=70,choices=[ (i, "P:"+ str(i.month)+":"+str(i.year)) for i in date_period])
     sub_id = models.ForeignKey(SBU_Directorate,on_delete=models.CASCADE)
     dept_id = models.ForeignKey(Department,on_delete=models.CASCADE)
     unit_id = models.ForeignKey(Unit, on_delete=models.CASCADE)

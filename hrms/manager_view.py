@@ -418,7 +418,7 @@ class SKPD_Delete(LoginRequiredMixin,DeleteView):
     template_name = 'hrms/manager/skpd/skpd-delete.html'
     model = SKPD
     login_url = 'hrms:manager_login'
-    
+    context_object_name = "skpd" 
     
     success_url = reverse_lazy('hrms:skpd_all')
     
@@ -523,7 +523,7 @@ class Evalutation_Delete(DeleteView):
     template_name = 'hrms/manager/evalutation/evaluation-delete.html'
     model = KPI_Evalutation 
     login_url = 'hrms:manager_login'
-    
+    context_object_name = "eva"
     
     success_url = reverse_lazy('hrms:eva_all')
     

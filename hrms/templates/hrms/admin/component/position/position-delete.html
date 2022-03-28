@@ -23,8 +23,7 @@
             
             </div>
             <input type="submit" value="Confirm">
-            <!-- <h3 style="float: right; "> <a style="color: red;" href=" {% url "hrms:position_delete" pk=position.position_id %}">Yes, I'm sure </a> </h3> -->
-            <h3 > <a style="color: rgba(255, 0, 0, 0.948);" href=" {% url "hrms:position_detail" pk=position.position_id %}">No, take me back</a> </h3>
+            <h3 > <a style="color: rgba(255, 0, 0, 0.948);" href=" {% url "hrms:position_detail" pk=position.position_code %}">No, take me back</a> </h3>
 
         </form>
 

@@ -21,24 +21,28 @@
               {{form.errors}}
 
               <div class="form-control">
+                  <!-- <input type="text" placeholder="Department Name "> -->
                   {{form.sbu_id}}
                   <i class="fas fa-address-book"></i>
               </div>
                   <div class="form-control">
+                  <!-- <input type="text" placeholder="Department Name "> -->
                   {{form.sbu_name}}
                   <i class="fas fa-address-book"></i>
               </div>
               <div class="form-control">
+                  <!-- <input type="text" placeholder="Department Name "> -->
                   {{form.sbu_email}}
                   <i class="fas fa-address-book"></i>
               </div>
               <div class="form-control">
+                  <!-- <input type="text" placeholder="Department Name "> -->
                   {{form.director_of_service}}
               </div>
    
 
               <div class="button-container">
-                <button type="submit" class="button-update"> <a style="text-decoration: none;" href=" {% url "hrms:admin_setting">Cancel</a> </button>
+                <button type="submit" class="button-update"> <a style="text-decoration: none;" href=" {% url "hrms:sbu_all"%} ">Cancel</a> </button>
                   <button type="submit" class="button-update"> Create SBU Directorate </button>
               </div>
           </form>

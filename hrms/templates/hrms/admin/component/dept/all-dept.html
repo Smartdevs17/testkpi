@@ -98,6 +98,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% if depts %}
 
                         {% for dept in depts %}
 
@@ -110,6 +111,7 @@
 
                         {% endfor %}
 
+                        {% endif %}
 
                     </tbody>
                 </table>

@@ -73,31 +73,7 @@ urlpatterns = [
     path('dashboard/employee/<int:id>/kin/<int:pk>/update/', views.Employee_Kin_Update.as_view(), name='kin_update'),
 
 
-# #EmployeeType Routes
-#     path('dashboard/department/<int:pk>/', views.Department_Detail.as_view(), name='dept_detail'),
-#     path('dashboard/employeetype/add/', views.EmployeeType_New.as_view(), name='employeetype_new'),
-#     path('dashboard/department/<int:pk>/update/', views.Department_Update.as_view(), name='dept_update'),
-#     path('dashboard/employee/<str:pk>/delete/', views.EmployeeType_Delete.as_view(), name='employee_delete'),
 
-
-# #EmployeeType Routes
-#     path('dashboard/department/<int:pk>/', views.Department_Detail.as_view(), name='dept_detail'),
-#     path('dashboard/directorate/add/', views.Directorate_New.as_view(), name='directorate_new'),
-#     path('dashboard/department/<int:pk>/update/', views.Department_Update.as_view(), name='dept_update'),
-#     path('dashboard/employee/<str:pk>/delete/', views.EmployeeType_Delete.as_view(), name='employee_delete'),
-
-    # path('dashboard/employeetype/add/', views.EmployeeType_New.as_view(), name='employeetype_new'),
-    # path('dashboard/directorate/add/', views.Directorate_New.as_view(), name='directorate_new'),
-    # path('dashboard/department/add/', views.Department_New.as_view(), name='dept_new'),
-    # path('dashboard/unit/add/', views.Unit_New.as_view(), name='unit_new'),
-    # path('dashboard/designation/add/', views.Designation_New.as_view(), name='design_new'),
-    # # path('dashboard/gradelevel/add/', views.GradeLevel_New.as_view(), name='grade_new'),
-    # path('dashboard/position/add/', views.Position_New.as_view(), name='position_new'),
-    # path('dashboard/station/add/', views.Station_New.as_view(), name='station_new'),
-    # # path('dashboard/bank/add/', views.Bank_New.as_view(), name='bank_new'),
-    # path('dashboard/employment/add/', views.Employment_New.as_view(), name='employment_new'),
-    # path('dashboard/kpd/add/', views.KPD_New.as_view(), name='kpd_new'),
-    # path('dashboard/kpiscorerange/add/', views.KPIScoreRange_New.as_view(), name='kpiscore_new'),
 
 
 
@@ -106,99 +82,99 @@ urlpatterns = [
 #Bank Routes
     path('dashboard/bank/add/', views.Bank_New.as_view(), name='bank_new'),
     path('dashboard/bank/all/', views.Bank_All.as_view(), name='bank_all'),
-    path('dashboard/bank/<str:pk>/', views.Bank_Detail.as_view(), name='bank_detail'),
-    path('dashboard/bank/<str:pk>/update/', views.Bank_Update.as_view(), name='bank_update'),
-    path('dashboard/bank/<str:pk>/delete/', views.Bank_Delete.as_view(), name='bank_delete'),
+    path('dashboard/bank/<slug:pk>/', views.Bank_Detail.as_view(), name='bank_detail'),
+    path('dashboard/bank/<slug:pk>/update/', views.Bank_Update.as_view(), name='bank_update'),
+    path('dashboard/bank/<slug:pk>/delete/', views.Bank_Delete.as_view(), name='bank_delete'),
     
     
 #EmployeeType Routes
     path('dashboard/employeetype/add/', views.EmployeeType_New.as_view(), name='employeetype_new'),
     path('dashboard/employeetype/all/', views.EmployeeType_All.as_view(), name='employeetype_all'),
-    path('dashboard/employeetype/<str:pk>/', views.EmployeeType_Detail.as_view(), name='employeetype_detail'),
-    path('dashboard/employeetype/<str:pk>/update/', views.EmployeeType_Update.as_view(), name='employeetype_update'),
-    path('dashboard/employeetype/<str:pk>/delete/', views.EmployeeType_Delete.as_view(), name='employeetype_delete'),
+    path('dashboard/employeetype/<slug:pk>/', views.EmployeeType_Detail.as_view(), name='employeetype_detail'),
+    path('dashboard/employeetype/<slug:pk>/update/', views.EmployeeType_Update.as_view(), name='employeetype_update'),
+    path('dashboard/employeetype/<slug:pk>/delete/', views.EmployeeType_Delete.as_view(), name='employeetype_delete'),
 
 
 #Directorate Routes
     path('dashboard/sbu/add/', views.Directorate_New.as_view(), name='sbu_new'),
     path('dashboard/sbu/all/', views.Directorate_All.as_view(), name='sbu_all'),
-    path('dashboard/sbu/<str:pk>/', views.Directorate_Detail.as_view(), name='sbu_detail'),
-    path('dashboard/sbu/<str:pk>/update/', views.Directorate_Update.as_view(), name='sbu_update'),
-    path('dashboard/sbu/<str:pk>/delete/', views.Directorate_Delete.as_view(), name='sbu_delete'),
+    path('dashboard/sbu/<slug:pk>/', views.Directorate_Detail.as_view(), name='sbu_detail'),
+    path('dashboard/sbu/<slug:pk>/update/', views.Directorate_Update.as_view(), name='sbu_update'),
+    path('dashboard/sbu/<slug:pk>/delete/', views.Directorate_Delete.as_view(), name='sbu_delete'),
 
 
 #Department Routes
     path('dashboard/dept/add/', views.Department_New.as_view(), name='dept_new'),
     path('dashboard/dept/all/', views.Department_All.as_view(), name='dept_all'),
-    path('dashboard/dept/<str:pk>/', views.Department_Detail.as_view(), name='dept_detail'),
-    path('dashboard/dept/<str:pk>/update/', views.Department_Update.as_view(), name='dept_update'),
-    path('dashboard/dept/<str:pk>/delete/', views.Department_Delete.as_view(), name='dept_delete'),
+    path('dashboard/dept/<slug:pk>/', views.Department_Detail.as_view(), name='dept_detail'),
+    path('dashboard/dept/<slug:pk>/update/', views.Department_Update.as_view(), name='dept_update'),
+    path('dashboard/dept/<slug:pk>/delete/', views.Department_Delete.as_view(), name='dept_delete'),
 
 
 #Unit Routes
     path('dashboard/unit/add/', views.Unit_New.as_view(), name='unit_new'),
     path('dashboard/unit/all/', views.Unit_All.as_view(), name='unit_all'),
-    path('dashboard/unit/<str:pk>/', views.Unit_Detail.as_view(), name='unit_detail'),
-    path('dashboard/unit/<str:pk>/update/', views.Unit_Update.as_view(), name='unit_update'),
-    path('dashboard/unit/<str:pk>/delete/', views.Unit_Delete.as_view(), name='unit_delete'),
+    path('dashboard/unit/<slug:pk>/', views.Unit_Detail.as_view(), name='unit_detail'),
+    path('dashboard/unit/<slug:pk>/update/', views.Unit_Update.as_view(), name='unit_update'),
+    path('dashboard/unit/<slug:pk>/delete/', views.Unit_Delete.as_view(), name='unit_delete'),
     
     
     
 #Station Routes
     path('dashboard/station/add/', views.Station_New.as_view(), name='station_new'),
     path('dashboard/station/all/', views.Station_All.as_view(), name='station_all'),
-    path('dashboard/station/<str:pk>/', views.Station_Detail.as_view(), name='station_detail'),
-    path('dashboard/station/<str:pk>/update/', views.Station_Update.as_view(), name='station_update'),
-    path('dashboard/station/<str:pk>/delete/', views.Station_Delete.as_view(), name='station_delete'),
+    path('dashboard/station/<slug:pk>/', views.Station_Detail.as_view(), name='station_detail'),
+    path('dashboard/station/<slug:pk>/update/', views.Station_Update.as_view(), name='station_update'),
+    path('dashboard/station/<slug:pk>/delete/', views.Station_Delete.as_view(), name='station_delete'),
 
 
 
 #Designation Routes
     path('dashboard/design/add/', views.Designation_New.as_view(), name='design_new'),
     path('dashboard/design/all/', views.Designation_All.as_view(), name='design_all'),
-    path('dashboard/design/<str:pk>/', views.Designation_Detail.as_view(), name='design_detail'),
-    path('dashboard/design/<str:pk>/update/', views.Designation_Update.as_view(), name='design_update'),
-    path('dashboard/design/<str:pk>/delete/', views.Designation_Delete.as_view(), name='design_delete'),
+    path('dashboard/design/<slug:pk>/', views.Designation_Detail.as_view(), name='design_detail'),
+    path('dashboard/design/<slug:pk>/update/', views.Designation_Update.as_view(), name='design_update'),
+    path('dashboard/design/<slug:pk>/delete/', views.Designation_Delete.as_view(), name='design_delete'),
 
 
 
 #Position Routes
     path('dashboard/position/add/', views.Position_New.as_view(), name='position_new'),
     path('dashboard/position/all/', views.Position_All.as_view(), name='position_all'),
-    path('dashboard/position/<str:pk>/', views.Position_Detail.as_view(), name='position_detail'),
-    path('dashboard/position/<str:pk>/update/', views.Position_Update.as_view(), name='position_update'),
-    path('dashboard/position/<str:pk>/delete/', views.Position_Delete.as_view(), name='position_delete'),
+    path('dashboard/position/<slug:pk>/', views.Position_Detail.as_view(), name='position_detail'),
+    path('dashboard/position/<slug:pk>/update/', views.Position_Update.as_view(), name='position_update'),
+    path('dashboard/position/<slug:pk>/delete/', views.Position_Delete.as_view(), name='position_delete'),
     
     
 #KPD Routes
     path('dashboard/kpd/add/', views.KPD_New.as_view(), name='kpd_new'),
     path('dashboard/kpd/all/', views.KPD_All.as_view(), name='kpd_all'),
-    path('dashboard/kpd/<str:pk>/', views.KPD_Detail.as_view(), name='kpd_detail'),
-    path('dashboard/kpd/<str:pk>/update/', views.KPD_Update.as_view(), name='kpd_update'),
-    path('dashboard/kpd/<str:pk>/delete/', views.KPD_Delete.as_view(), name='kpd_delete'),
+    path('dashboard/kpd/<slug:pk>/', views.KPD_Detail.as_view(), name='kpd_detail'),
+    path('dashboard/kpd/<slug:pk>/update/', views.KPD_Update.as_view(), name='kpd_update'),
+    path('dashboard/kpd/<slug:pk>/delete/', views.KPD_Delete.as_view(), name='kpd_delete'),
     
 
 #KPISR Routes
     path('dashboard/kpisr/add/', views.KPISR_New.as_view(), name='kpisr_new'),
     path('dashboard/kpisr/all/', views.KPISR_All.as_view(), name='kpisr_all'),
-    path('dashboard/kpisr/<str:pk>/', views.KPISR_Detail.as_view(), name='kpisr_detail'),
-    path('dashboard/kpisr/<str:pk>/update/', views.KPISR_Update.as_view(), name='kpisr_update'),
-    path('dashboard/kpisr/<str:pk>/delete/', views.KPISR_Delete.as_view(), name='kpisr_delete'),
+    path('dashboard/kpisr/<slug:pk>/', views.KPISR_Detail.as_view(), name='kpisr_detail'),
+    path('dashboard/kpisr/<slug:pk>/update/', views.KPISR_Update.as_view(), name='kpisr_update'),
+    path('dashboard/kpisr/<slug:pk>/delete/', views.KPISR_Delete.as_view(), name='kpisr_delete'),
    
 #KPISP Routes
     path('dashboard/kpisp/add/', views.KPISP_New.as_view(), name='kpisp_new'),
     path('dashboard/kpisp/all/', views.KPISP_All.as_view(), name='kpisp_all'),
-    path('dashboard/kpisp/<str:pk>/', views.KPISP_Detail.as_view(), name='kpisp_detail'),
-    path('dashboard/kpisp/<str:pk>/update/', views.KPISP_Update.as_view(), name='kpisp_update'),
-    path('dashboard/kpisp/<str:pk>/delete/', views.KPISP_Delete.as_view(), name='kpisp_delete'),
+    path('dashboard/kpisp/<slug:pk>/', views.KPISP_Detail.as_view(), name='kpisp_detail'),
+    path('dashboard/kpisp/<slug:pk>/update/', views.KPISP_Update.as_view(), name='kpisp_update'),
+    path('dashboard/kpisp/<slug:pk>/delete/', views.KPISP_Delete.as_view(), name='kpisp_delete'),
     
     
 #Employment Routes
     path('dashboard/employment/add/', views.Employment_New.as_view(), name='employment_new'),
     path('dashboard/employment/all/', views.Employment_All.as_view(), name='employment_all'),
-    path('dashboard/employment/<str:pk>/', views.Employment_Detail.as_view(), name='employment_detail'),
-    path('dashboard/employment/<str:pk>/update/', views.Employment_Update.as_view(), name='employment_update'),
-    path('dashboard/employment/<str:pk>/delete/', views.Employment_Delete.as_view(), name='employment_delete'), 
+    path('dashboard/employment/<slug:pk>/', views.Employment_Detail.as_view(), name='employment_detail'),
+    path('dashboard/employment/<slug:pk>/update/', views.Employment_Update.as_view(), name='employment_update'),
+    path('dashboard/employment/<slug:pk>/delete/', views.Employment_Delete.as_view(), name='employment_delete'), 
     path('dashboard/employee/search/', views.SearchView.as_view(),name = "search"),
     
     
@@ -231,8 +207,8 @@ urlpatterns = [
     path('dashboard/eva/<slug:pk>/add/', views.Evalutation_New.as_view(), name='eva_new'),
     path('dashboard/eva/all/', views.Evalutation_All.as_view(), name='eva_all'),
     path('dashboard/eva/all/<slug:pk>/details', views.Evalutation_All_Details.as_view(), name='eva_all_detail'),
-    path('dashboard/eva/<str:pk>/', views.Evalutation_Detail.as_view(), name='eva_detail'),
-    path('dashboard/eva/<str:pk>/update/', views.Evalutation_Update.as_view(), name='eva_update'),
-    path('dashboard/eva/<str:pk>/delete/', views.Evalutation_Delete.as_view(), name='eva_delete'),
+    path('dashboard/eva/<slug:pk>/', views.Evalutation_Detail.as_view(), name='eva_detail'),
+    path('dashboard/eva/<slug:pk>/update/', views.Evalutation_Update.as_view(), name='eva_update'),
+    path('dashboard/eva/<slug:pk>/delete/', views.Evalutation_Delete.as_view(), name='eva_delete'),
 
 ]
