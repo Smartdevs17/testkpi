@@ -272,6 +272,7 @@ class KPDForm(forms.ModelForm):
             model = KPD
             fields = "__all__"
             widgets={
+            'period':forms.Select(),
             'sub_id':forms.Select(),
             'dept_id':forms.Select(),
             'unit_id':forms.Select(),

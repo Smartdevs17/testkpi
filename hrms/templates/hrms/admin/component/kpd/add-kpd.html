@@ -18,6 +18,10 @@
               <form method="POST" class="login-form">
                   {% csrf_token%}
                   {{form.errors}}
+                  <h3>Period</h3>
+                  <div class="form-control">
+                      {{form.period}}
+                  </div>
                   <h3>SBU ID</h3>
                   <div class="form-control">
                       {{form.sub_id}}
