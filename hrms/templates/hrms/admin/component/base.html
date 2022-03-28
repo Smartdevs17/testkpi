@@ -39,19 +39,7 @@
                 <span class="material-icons-sharp"> person_outline </span>
                 <h3> Employees </h3>
              </a>
-             <!-- <a href=" {% url "hrms:employeetype_new"%}">
-                <span class="material-icons-sharp"> speaker_group </span>
-                <h3> Departments </h3>
-             </a> -->
-             <a href="#">
-                <span class="material-icons-sharp"> insights </span>
-                <h3> Analytics </h3>
-             </a>
-
-             <a href="#">
-                <span class="material-icons-sharp"> question_answer </span>
-                <h3> Leave </h3>
-             </a>
+      
              <a href="{% url 'hrms:report_complaint' %}">
                 <span class="material-icons-sharp"> summarize </span>
                 <h3> Employee Complaint </h3>
@@ -95,12 +83,12 @@
                     </div>
                     <div class="profile">
                         <div class="info">
-                            <p>Hey, <b>John</b></p>
+                            <p>Hey, <b> {{user.username | upper}} </b></p>
                             <small class="text-muted">Employee</small>
                         </div>
-                        <div class="profile-photo">
+                        <!-- <div class="profile-photo">
                         <img src="./images/profile-1.jpg" alt="">
-                        </div>
+                        </div> -->
                     </div>
                 </div>   
                 

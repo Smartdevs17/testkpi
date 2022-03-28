@@ -5,7 +5,9 @@ from django.contrib.auth import get_user_model
 from .models  import (Employee, Department,Kin, Attendance, Leave,SBU_Directorate,
                     Station,Unit,MKPD,SKPD,
                     KPI_Evalutation,KPIScorePenalty,KPIScoreRange,Designation,
-                    Employment,GradeLevel,Position,Bank,EmployeeType,KPD,Complaint)
+                    Employment,
+                    # GradeLevel,
+                    Position,Bank,EmployeeType,KPD,Complaint)
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
@@ -38,7 +40,20 @@ from datetime import datetime
 
 
 
+import datetime
 
+def range_of_months(start_date,end_date):
+    months = []
+    for i in range(start_date.year * 12 + start_date.month, end_date.year*12 + end_date.month + 1):
+        months.append(datetime.date((i-13) // 12 +1 , (i-1) % 12 + 1,1))
+    return(months)  
+    # for month in months:
+    #     print(month.month)
+    # return ("P:"+str(month.month)+ ":" +str(month.year))
+  
+start_date = datetime.date.today()
+end_date = datetime.date(2022,12,12)
+date_period = range_of_months(start_date,end_date)
 
 
 
@@ -91,7 +106,11 @@ class Employee_Dashboard(LoginRequiredMixin,ListView):
             self.employee = Employee.objects.get(user=self.request.user)
             task = SKPD.objects.filter(employee__employee=self.employee)
             # print(task[0].date)
-            context["projects"] = SKPD.objects.filter(employee__employee=self.employee)
+            project = SKPD.objects.filter(Q(employee__employee=self.employee) & Q(period__month=datetime.date.today().month))
+            # context["projects"] = SKPD.objects.filter(employee__employee=self.employee)
+            context["projects"] = SKPD.objects.filter(Q(employee__employee=self.employee) & Q(period__month=datetime.date.today().month))
+            # project = SKPD.objects.filter(period__month=datetime.date.today().month)
+            # print(project)
             context["ratings"] = KPI_Evalutation.objects.filter(skpd__employee__employee=self.employee)
         except ObjectDoesNotExist:
             return context        
@@ -128,6 +147,8 @@ class Complete_Project(LoginRequiredMixin,CreateView):
     form_class  = MKPDForm
     login_url = 'hrms:employee_login'
     template_name = 'hrms/employeedashboard/todo-tasks-details.html'
+    
+    success_url = reverse_lazy('hrms:employee_dashboard')
 
     def form_valid(self,form):
         my_user = Employment.objects.get(employee__user=self.request.user)
@@ -135,16 +156,7 @@ class Complete_Project(LoginRequiredMixin,CreateView):
         form.instance.employee = my_user
         # form.instance.skpd = skpd
         return super().form_valid(form)
-    success_url = reverse_lazy('hrms:employee_dashboard')
 
-def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        try:
-            query = Kin.objects.get(employee=self.object.pk)
-            context["kin"] = query
-            return context
-        except ObjectDoesNotExist:
-            return context
 
 #   Employee Complaint
 class Complaint_View(LoginRequiredMixin,CreateView):
@@ -214,22 +226,20 @@ class Employee_All(LoginRequiredMixin,ListView):
         return context
 
         
-# class Employee_View(LoginRequiredMixin,DetailView):
-#     # queryset = Employee.objects.select_related('department')
-#     queryset = Employee.objects.all()
-#     # template_name = 'hrms/employee/single.html'
-#     template_name = 'hrms/employeedashboard/employeedashboard.html'
-#     context_object_name = 'employee'
-#     login_url = 'hrms:login'
+class Employee_View(LoginRequiredMixin,DetailView):
+    queryset = Employee.objects.all()
+    template_name = 'hrms/employeedashboard/employeedashboard.html'
+    context_object_name = 'employee'
+    login_url = 'hrms:login'
     
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         try:
-#             query = Kin.objects.get(employee=self.object.pk)
-#             context["kin"] = query
-#             return context
-#         except ObjectDoesNotExist:
-#             return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        try:
+            query = Kin.objects.get(employee=self.object.pk)
+            context["kin"] = query
+            return context
+        except ObjectDoesNotExist:
+            return context
 
 
         
@@ -273,3 +283,111 @@ class Employee_Kin_Update(LoginRequiredMixin,UpdateView):
             initial['employee'] = emp.pk
             
             return initial
+        
+        
+        
+
+#   Create Project
+class Complete_Project(LoginRequiredMixin,CreateView):
+    model = MKPD
+    form_class  = MKPDForm
+    login_url = 'hrms:employee_login'
+    template_name = 'hrms/employeedashboard/todo-tasks-details.html'
+
+    def form_valid(self,form):
+        my_user = Employment.objects.get(employee__user=self.request.user)
+        # skpd = SKPD.objects.get(employee__employee__user=self.request.user)
+        form.instance.employee = my_user
+        # form.instance.skpd = skpd
+        return super().form_valid(form)
+    success_url = reverse_lazy('hrms:employee_dashboard')
+
+def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        try:
+            query = Kin.objects.get(employee=self.object.pk)
+            context["kin"] = query
+            return context
+        except ObjectDoesNotExist:
+            return context
+
+
+
+#Employmentviews
+class Project_All(LoginRequiredMixin,ListView):
+    template_name = 'hrms/employeedashboard/mkpd/all-mkpd.html'
+    login_url = 'hrms:employee_login'
+    model = MKPD
+    context_object_name = 'qset'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['mkpd_total'] = MKPD.objects.filter(employee__employee__user=self.request.user).count()   
+        context['projects'] = MKPD.objects.filter(employee__employee__user=self.request.user).order_by('-mkpd_id')
+        return context
+
+  
+class Project_Detail(LoginRequiredMixin,DetailView):
+    queryset = MKPD.objects.all()
+    template_name = 'hrms/employeedashboard/mkpd/mkpd-details.html'
+    context_object_name = 'mkpd'
+    login_url = 'hrms:manager_login'
+    
+class Project_New(LoginRequiredMixin,CreateView):
+    model = MKPD
+    form_class  = MKPDForm
+    login_url = 'hrms:employee_login'
+    template_name = 'hrms/employeedashboard/mkpd/add-mkpd.html'
+    
+    success_url = reverse_lazy('hrms:employee_dashboard')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["skpd"] = SKPD.objects.get(skpd_id=self.kwargs["pk"])
+        return context
+    def form_valid(self,form,*args,**kwargs):
+        # my_user = Employment.objects.get(employee__user=self.request.user)
+        my_user = Employment.objects.get(staff__skpd_id=self.kwargs["pk"])
+        skpd = SKPD.objects.get(skpd_id=self.kwargs["pk"])
+        form.instance.employee = my_user
+        form.instance.skpd = skpd
+        form.instance.period = skpd.period
+        return super().form_valid(form)
+
+        
+class Project_Update(LoginRequiredMixin,UpdateView):
+    model = MKPD
+    template_name = 'hrms/employeedashboard/mkpd/add-mkpd.html'
+    form_class = MKPDForm
+    login_url = 'hrms:employee_login'
+    success_url = reverse_lazy('hrms:proj_all')
+    
+    # def get_form_kwargs(self):
+    #     kwargs = super(MKPD_Update,self).get_form_kwargs()
+    #     kwargs['request'] = self.request
+    #     # kwargs.update({"user":self.request.user})
+    #     return kwargs
+    
+class Project_Delete(LoginRequiredMixin,DeleteView):
+    template_name = 'hrms/employeedashboard/mkpd/mkpd-delete.html'
+    model = MKPD
+    login_url = 'hrms:employee_login'
+    
+    
+    success_url = reverse_lazy('hrms:proj_all')
+    
+def load_depts(request):
+    sbu_id = request.GET.get('sbu_id')
+    unit_id = request.GET.get('unit_id')
+    # print(sbu_id)
+    depts = Unit.objects.filter(dept_id=sbu_id).order_by('unit_id')
+    # print(depts)
+    return render(request, 'hrms/manager/dept_dropdown_list_options.html', {'depts': depts})
+    # return JsonResponse(list(depts.values("unit_id","unit_name")),safe=False)
+    
+def load_units(request):
+    unit_id = request.GET.get('unit_id')
+    print(unit_id)
+    units = Employment.objects.filter(unit=unit_id).order_by('employee')
+    # print(depts)
+    return render(request, 'hrms/manager/unit_dropdown_list_options.html', {'units': units})
+    # return JsonResponse(list(depts.values("unit_id","unit_name")),safe=False)

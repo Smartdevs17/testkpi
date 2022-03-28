@@ -40,19 +40,8 @@
                     <span class="material-icons-sharp"> person_outline </span>
                     <h3> Employees </h3>
                  </a>
-                 <!-- <a href=" {% url "hrms:employeetype_new"%}">
-                    <span class="material-icons-sharp"> speaker_group </span>
-                    <h3> Departments </h3>
-                 </a> -->
-                 <a href="#">
-                    <span class="material-icons-sharp"> insights </span>
-                    <h3> Analytics </h3>
-                 </a>
-
-                 <a href="#">
-                    <span class="material-icons-sharp"> question_answer </span>
-                    <h3> Leave </h3>
-                 </a>
+         
+    
                  <a href="{% url 'hrms:report_complaint' %}">
                     <span class="material-icons-sharp"> summarize </span>
                     <h3> Employee Complaint </h3>
@@ -61,10 +50,7 @@
                     <span class="material-icons-sharp"> settings </span>
                     <h3> Settings </h3>
                  </a>
-                 <!-- <a href="{% url 'hrms:employment_new' %}">
-                    <span class="material-icons-sharp"> add </span>
-                    <h3> Add Employee </h3>
-                 </a> -->
+
      
                  <a href=" {% url "hrms:admin_logout" %} ">
                     <span class="material-icons-sharp"> logout </span>
@@ -108,9 +94,83 @@
                         </div>
                     </div>
                     <small class="text-muted"> Total SBU Directorate </small>
+                    <h3 style="float: right;" > <a href=" {% url "hrms:sbu_all"%} "> View All </a> <h3/>
                   </div>
 
                   <!-- END OF ADMIN COUNT -->
+
+
+                           <!-- BEGINNING OF DEPARTMENT COUNT -->
+                <div class="project-analytics">
+                    <span class="material-icons-sharp">  inventory </span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3> Department </h3>
+                            <h5></h5>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" CY="38" R='36' ></circle>
+                            </svg>
+                            <div class="number">
+                                <p>{{dept_total}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted"> Available Departments</small>
+                    <h3 style="float: right;" > <a href=" {% url "hrms:dept_all"%} "> View All </a> <h3/>
+                  </div>
+
+                  <!-- END OF DEPARTMENT COUNT -->
+
+
+
+                                  <!-- BEGINNING OF DEPARTMENT COUNT -->
+                <div class="project-analytics">
+                    <span class="material-icons-sharp">  inventory </span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3> Unit </h3>
+                            <h5></h5>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" CY="38" R='36' ></circle>
+                            </svg>
+                            <div class="number">
+                                <p>{{unit_total}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted"> Available Units</small>
+                    <h3 style="float: right;" > <a href=" {% url "hrms:unit_all"%} "> View All </a> <h3/>
+                  </div>
+
+                  <!-- END OF DEPARTMENT COUNT -->
+
+
+            <!-- BEGINNING OF EMPLOYEE COUNT -->
+                <div class="employee-analytics">
+                    <span class="material-icons-sharp"> bar_chart </span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3> Employee </h3>
+                            <h5></h5>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" CY="38" R='36' ></circle>
+                            </svg>
+                            <div class="number">
+                                <p>{{reg_total}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted"> Employee's Total Count </small>
+                    <h3 style="float: right;" > <a href=" {% url "hrms:employment_all"%} "> View All </a> <h3/>
+                  </div>
+
+                  <!-- END OF EMPLOYEE COUNT -->
 
 
                   <!-- BEGINNING OF ADMIN COUNT -->
@@ -131,56 +191,10 @@
                         </div>
                     </div>
                     <small class="text-muted"> Total Out Stations </small>
+                    <h3 style="float: right;" > <a href=" {% url "hrms:station_all"%} "> View All </a> <h3/>
                   </div>
 
                   <!-- END OF ADMIN COUNT -->
-
-                  
-                <!-- BEGINNING OF EMPLOYEE COUNT -->
-                <div class="employee-analytics">
-                    <span class="material-icons-sharp"> bar_chart </span>
-                    <div class="middle">
-                        <div class="left">
-                            <h3> Employee </h3>
-                            <h5></h5>
-                        </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" CY="38" R='36' ></circle>
-                            </svg>
-                            <div class="number">
-                                <p>{{emp_total}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <small class="text-muted"> Employee's Total Count </small>
-                  </div>
-
-                  <!-- END OF EMPLOYEE COUNT -->
-
-                  
-                <!-- BEGINNING OF DEPARTMENT COUNT -->
-                <div class="project-analytics">
-                    <span class="material-icons-sharp">  inventory </span>
-                    <div class="middle">
-                        <div class="left">
-                            <h3> Department </h3>
-                            <h5></h5>
-                        </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" CY="38" R='36' ></circle>
-                            </svg>
-                            <div class="number">
-                                <p>{{dept_total}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <small class="text-muted"> Available Departments</small>
-                  </div>
-
-                  <!-- END OF DEPARTMENT COUNT -->
-
 
 
                     <!-- BEGINNING OF DEPARTMENT COUNT -->
@@ -201,33 +215,82 @@
                             </div>
                         </div>
                         <small class="text-muted"> Total Designation </small>
+                        <h3 style="float: right;" > <a href=" {% url "hrms:design_all"%} "> View All </a> <h3/>
                     </div>
 
                     <!-- END OF DEPARTMENT COUNT -->     
-                    
-                    
 
-                <!-- BEGINNING OF DEPARTMENT COUNT -->
-                <div class="project-analytics">
-                    <span class="material-icons-sharp">  inventory </span>
-                    <div class="middle">
-                        <div class="left">
-                            <h3> Unit </h3>
-                            <h5></h5>
-                        </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" CY="38" R='36' ></circle>
-                            </svg>
-                            <div class="number">
-                                <p>{{unit_total}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <small class="text-muted"> Available Units</small>
-                  </div>
+          <!-- BEGINNING OF DEPARTMENT COUNT -->
+                                        <div class="project-analytics">
+                                            <span class="material-icons-sharp">  inventory </span>
+                                            <div class="middle">
+                                                <div class="left">
+                                                    <h3> Bank </h3>
+                                                    <h5></h5>
+                                                </div>
+                                                <div class="progress">
+                                                    <svg>
+                                                        <circle cx="38" CY="38" R='36' ></circle>
+                                                    </svg>
+                                                    <div class="number">
+                                                        <p>{{bank_total}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <small style="float: left;" class="text-muted"> No. of Bank </small> 
+                                            <h3 style="float: right;" > <a href=" {% url "hrms:bank_all"%} "> View All </a> <h3/>
+                                        </div>
+                    
+                                        <!-- END OF DEPARTMENT COUNT -->   
+                    
+                                                  
+                                    <!-- BEGINNING OF DEPARTMENT COUNT -->
+                                    <div class="project-analytics">
+                                        <span class="material-icons-sharp">  inventory </span>
+                                        <div class="middle">
+                                            <div class="left">
+                                                <h3> Position </h3>
+                                                <h5></h5>
+                                            </div>
+                                            <div class="progress">
+                                                <svg>
+                                                    <circle cx="38" CY="38" R='36' ></circle>
+                                                </svg>
+                                                <div class="number">
+                                                    <p>{{position_total}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <small style="float: left;" class="text-muted"> No. of Position </small> 
+                                        <h3 style="float: right;" > <a href=" {% url "hrms:position_all"%} "> View All </a> <h3/>
+                                    </div>
 
-                  <!-- END OF DEPARTMENT COUNT -->
+                                    <!-- END OF DEPARTMENT COUNT -->   
+
+
+                                       <!-- BEGINNING OF DEPARTMENT COUNT -->
+                                       <div class="project-analytics">
+                                        <span class="material-icons-sharp">  inventory </span>
+                                        <div class="middle">
+                                            <div class="left">
+                                                <h3> EmployeeType </h3>
+                                                <h5></h5>
+                                            </div>
+                                            <div class="progress">
+                                                <svg>
+                                                    <circle cx="38" CY="38" R='36' ></circle>
+                                                </svg>
+                                                <div class="number">
+                                                    <p>{{employeetype_total}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <small style="float: left;" class="text-muted"> No. of EmployeeType </small> 
+                                        <h3 style="float: right;" > <a href=" {% url "hrms:employeetype_all"%} "> View All </a> <h3/>
+                                    </div>
+                
+                                    <!-- END OF DEPARTMENT COUNT -->   
+
 
 
               </div>
@@ -259,7 +322,7 @@
                               {{worker.mobile}}
                             </td> -->
                             <td>
-                                {{worker.email}}
+                                {{worker.user.email}}
                               </td>
                             <td>
                               {{worker.mobile}} 
@@ -294,70 +357,10 @@
              
                </div>
 
-               <div class="department-analytics">
-                <h2> Recruitment / Payroll </h2>
-                <div class=" item resource">
-                 <div class="icon">
-                     <span class="material-icons-sharp">language</span>
-                    </div>
-                    <div class="right">
-                        <div class="info">
-                            <h3><a href="#">RECRUITMENT</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class=" item finance">
-                 <div class="icon">
-                     <span class="material-icons-sharp"> price_change</span>
-                    </div>
-                    <div class="right">
-                        <div class="info">
-                            <h3><a href="{% url 'hrms:payroll' %}">PAYROLL</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
 
-               <!-- ----------------- END OF RECENT UPDATES ------------------------->
-               <div class="department-analytics">
-                <h2> Recent Analytics</h2>
-                <div class=" item logistics">
-                    <div class="icon">
-                     <span class="material-icons-sharp"> sync_alt </span>
-                    </div>
-                    <div class="right">
-                        <div class="info">
-                            <h3> PROJECT NAME </h3>
-                            <small class="text-muted"> Johnson abel </small>
-                        </div>
-                        <h5 class="success"> +39% </h5>
-                    </div>
-                </div>
-                <div class=" item resource">
-                 <div class="icon">
-                     <span class="material-icons-sharp">language</span>
-                    </div>
-                    <div class="right">
-                        <div class="info">
-                            <h3> SENDING MEMO </h3>
-                            <small class="text-muted"> Kenneth dambe </small>
-                        </div>
-                        <h5 class="success"> +30% </h5>
-                    </div>
-                </div>
-                <div class=" item finance">
-                 <div class="icon">
-                     <span class="material-icons-sharp"> price_change</span>
-                    </div>
-                    <div class="right">
-                        <div class="info">
-                            <h3> CHG THG </h3>
-                            <small class="text-muted"> Raymond elliot </small>
-                        </div>
-                        <h5 class="success"> +12% </h5>
-                    </div>
-                </div>
-            </div>
+
+
            </div>
     </div>
 

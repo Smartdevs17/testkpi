@@ -5,7 +5,9 @@ from django.contrib.auth import get_user_model
 from .models  import (Employee, Department,Kin, Attendance, Leave,SBU_Directorate,
                     Station,Unit,MKPD,SKPD,
                     KPI_Evalutation,KPIScorePenalty,KPIScoreRange,Designation,
-                    Employment,GradeLevel,Position,Bank,EmployeeType,KPD,Complaint)
+                    Employment,
+                    # GradeLevel,
+                    Position,Bank,EmployeeType,KPD,Complaint)
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin

@@ -15,12 +15,12 @@
 
     <div class="insights">
 
-      <!-- BEGINNING OF CURRENT PROJECT/TASKS -->
+      <!-- BEGINNING OF Deliverables/TASKS -->
         <div class="employee-analytics">
           <span class="material-icons-sharp"> stacked_line_chart </span>
           <div class="middle">
               <div class="left">
-                  <h3> Current project </h3>
+                  <h3> Deliverables </h3>
               </div>
               <div class="progress">
                   <svg>
@@ -34,10 +34,10 @@
           <a class="text-muted" href="#"> see more </a>
         </div>
 
-        <!-- END OF CURRENT PROJECT/TASKS - -->
+        <!-- END OF Deliverables/TASKS - -->
 
         {% for project in projects %}    
-      <!-- BEGINNING OF CURRENT PROJECT/TASKS - -->
+      <!-- BEGINNING OF Deliverables/TASKS - -->
       <div class="employee-analytics">
           <span class="material-icons-sharp"> bar_chart </span>
           <div class="middle">
@@ -47,7 +47,11 @@
                   <!-- <h3> Dispense memo </h3> -->
                   <!-- <h3> {{project.kpd}} </h3> -->
 
-                  <h3>P:{{project.date.today.month}}:{{project.date.today.year}} </h3>
+                  <!-- <h3>P:{{project.date.today.month}}:{{project.date.today.year}} </h3> -->
+
+                  <!-- <h3>P:{{project.period.month}}:{{project.period.year}} </h3> -->
+                  <h3>P:{{project.period}} </h3>
+
 
               </div>
 
@@ -66,17 +70,17 @@
                   </div>
               </div>
           </div>
-          <a class="text-muted" href=" {% url "hrms:project_detail" pk=project.skpd_id %} "> see more </a>
+          <a class="text-muted" href=" {% url "hrms:proj_new" pk=project.skpd_id %} "> complete deliverable </a>
         </div>
 
-        <!-- END OF CURRENT PROJECT/TASKS - -->
+        <!-- END OF Deliverables/TASKS - -->
          {% endfor %}
 
         <div class="employee-analytics">
           <span class="material-icons-sharp"> stacked_line_chart </span>
           <div class="middle">
               <div class="left">
-                  <h3> Current project </h3>
+                  <h3> Deliverables </h3>
               </div>
               <div class="progress">
                   <svg>
@@ -94,7 +98,7 @@
           <span class="material-icons-sharp"> stacked_line_chart </span>
           <div class="middle">
               <div class="left">
-                  <h3> Current project </h3>
+                  <h3> Deliverables </h3>
               </div>
               <div class="progress">
                   <svg>
@@ -112,7 +116,7 @@
           <span class="material-icons-sharp"> stacked_line_chart </span>
           <div class="middle">
               <div class="left">
-                  <h3> Current project </h3>
+                  <h3> Deliverables </h3>
               </div>
               <div class="progress">
                   <svg>
@@ -129,7 +133,7 @@
           <span class="material-icons-sharp"> stacked_line_chart </span>
           <div class="middle">
               <div class="left">
-                  <h3> Current project </h3>
+                  <h3> Deliverables </h3>
               </div>
               <div class="progress">
                   <svg>
@@ -142,7 +146,7 @@
           </div>
           <a class="text-muted" href="#"> see more </a>
 
-         <!-- END OF CURRENT PROJECT/TASKS - -->
+         <!-- END OF Deliverables/TASKS - -->
 
     </div>
 </main>

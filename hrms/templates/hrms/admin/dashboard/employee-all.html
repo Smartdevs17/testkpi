@@ -38,23 +38,12 @@
                     <span class="material-icons-sharp"> person_outline </span>
                     <h3> Employees </h3>
                  </a>
-                 <!-- <a href=" {% url "hrms:employeetype_new"%}">
-                    <span class="material-icons-sharp"> speaker_group </span>
-                    <h3> Departments </h3>
-                 </a> -->
-                 <a href="#">
-                    <span class="material-icons-sharp"> insights </span>
-                    <h3> Analytics </h3>
-                 </a>
-
-                 <a href="#">
-                    <span class="material-icons-sharp"> question_answer </span>
-                    <h3> Leave </h3>
-                 </a>
+             
                  <a href="{% url 'hrms:report_complaint' %}">
                     <span class="material-icons-sharp"> summarize </span>
-                    <h3> Employee Reports </h3>
+                    <h3> Employee Complaint </h3>
                  </a>
+                 
                  <a href=" {% url "hrms:admin_setting"%} ">
                     <span class="material-icons-sharp"> settings </span>
                     <h3> Settings </h3>
@@ -106,7 +95,13 @@
                
 
                   <!-- END OF EMPLOYEE ANALYTICS -->
+                  <form action=" {% url "hrms:search"%} " method="get">
+                    <div class="searchfield" style="margin: 15px;">
+                        <input style="padding: 15px; border-radius:10px; color:#000; margin: 5px; width: 100%; border:1px solid #f4f4f4;" type="text" name="q" placeholder="Search by employee Id or firstname" class="searchfield">
+                        <input style="padding: 15px; border-radius:10px; color:#fff; cursor:pointer;  border:1px solid #f4f4f4; background-color: blue;"  type="submit" value="Submit">
+                    </div>
 
+                  </form>
                   
                 <!-- BEGINNING OF PROJECT ANALYTICS -->
               
@@ -119,6 +114,7 @@
                   <table>
                       <thead>
                           <tr>
+                              <th style="padding: 15px;" > Employee ID </th>
                               <th style="padding: 15px;" > First Name </th>
                               <th style="padding: 15px;" > Last name </th>
                               <th style="padding: 15px;" > Employee Type </th>
@@ -129,6 +125,8 @@
                               <th style="padding: 15px;" > Grade Level</th>
                               <th style="padding: 15px;" > Step</th>
                               <th style="padding: 15px;" > Position</th>
+                              <th style="padding: 15px;" > Action</th>
+
                               <th></th>
 
                           </tr>
@@ -137,58 +135,21 @@
                         {% for worker in workers %}
 
                           <tr>
-                              <td> {{worker.first_name}} </td>
-                              <td>  {{worker.last_name}}  </td>
-                              <td> {{worker.employee_type.employee_type}} </td>
+                              <td> {{worker.employ_id}} </td>
+                              <td> {{worker.employee.first_name}} </td>
+                              <td> {{worker.employee.last_name}}  </td>
+                              <td> {{worker.employee_type}} </td>
                               <td> {{worker.sbu_id}} </td>
                               <td> {{worker.station}} </td>
                               <td> {{worker.department}} </td>
                               <td> {{worker.designation}} </td>
-                              <td> {{worker.grade_level.gradelevel}} </td>
+                              <td> {{worker.gradelevel}} </td>
                               <td> {{worker.step}} </td>
                               <td> {{worker.position.position}} </td>
+                              <td> <a style="text-decoration: none;" href=" {% url "hrms:employment_detail" pk=worker.employ_id%} ">View</a> </td>
 
                           </tr>
-                          <!-- <tr>
-                            <td> Joshua Abanjo </td>
-                            <td> Hillary </td>
-                            <td> 202201 </td>
-                            <td> +2348767909876</td>
-                            <td class="warning" > On Leave </td>
-                            <td>Logistics</td>
-                        </tr>
-                        <tr>
-                            <td> Joshua Abanjo </td>
-                            <td> Hillary </td>
-                            <td> 202201 </td>
-                            <td> +2348767909876</td>
-                            <td class="warning"> On Leave </td>
-                            <td>Finance</td>
-                        </tr>
-                        <tr>
-                            <td> Angel ogbonna </td>
-                            <td> Hillary </td>
-                            <td> 202201 </td>
-                            <td> +2348767909876</td>
-                            <td class="success"> At work </td>
-                            <td>Security</td>
-                        </tr>
-                        <tr>
-                            <td> John doe </td>
-                            <td> Hillary </td>
-                            <td> 202201 </td>
-                            <td> +2348767909876</td>
-                            <td class="warning" > On Leave </td>
-                            <td>Analytics</td>
-                        </tr>
-                        <tr>
-                            <td> Joshua Abanjo </td>
-                            <td> Hillary </td>
-                            <td> 202201 </td>
-                            <td> +2348767909876</td>
-                            <td class="success"> At work </td>
-                            <td>Logistics</td>
-                        </tr> -->
+     
                         {% endfor %}                   
 
                       </tbody>

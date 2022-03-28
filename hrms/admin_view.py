@@ -5,7 +5,9 @@ from django.contrib.auth import get_user_model
 from .models  import (Employee, Department,Kin, Attendance, Leave,SBU_Directorate,
                     Station,Unit,MKPD,SKPD,
                     KPI_Evalutation,KPIScorePenalty,KPIScoreRange,Designation,
-                    Employment,GradeLevel,Position,Bank,EmployeeType,KPD,Complaint)
+                    Employment,
+                    # GradeLevel,
+                    Position,Bank,EmployeeType,KPD,Complaint)
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
@@ -59,14 +61,15 @@ class Admin_Dashboard(LoginRequiredMixin,SuperuserRequiredMixin,ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) 
-
+        context['reg_total'] = Employment.objects.all().count()
         context['emp_total'] = Employee.objects.all().count()
+        context['employeetype_total'] = EmployeeType.objects.all().count()
         context['dept_total'] = Department.objects.all().count()
         context['design_total'] = Designation.objects.all().count()
         context['manager_count'] = SBU_Directorate.objects.all().count()
         context['station_count'] = Station.objects.all().count()
         context['unit_total'] = Unit.objects.all().count()
-        context['grade_total'] = GradeLevel.objects.all().count()
+        # context['grade_total'] = GradeLevel.objects.all().count()
         context['position_total'] = Position.objects.all().count()
         context['bank_total'] = Bank.objects.all().count()    
         context['workers'] = Employee.objects.order_by('-emp_id')
@@ -89,12 +92,13 @@ class Admin_Setting(LoginRequiredMixin,SuperuserRequiredMixin,ListView):
         context['manager_count'] = SBU_Directorate.objects.all().count()
         context['station_count'] = Station.objects.all().count()
         context['unit_total'] = Unit.objects.all().count()
-        context['grade_total'] = GradeLevel.objects.all().count()
+        # context['grade_total'] = GradeLevel.objects.all().count()
         context['position_total'] = Position.objects.all().count()
         context['bank_total'] = Bank.objects.all().count() 
         context['design_total'] = Designation.objects.all().count()
         context['employeetype_total'] = EmployeeType.objects.all().count()
-        context['kpiscore_total'] = KPIScoreRange.objects.all().count()
+        context['kpisr_total'] = KPIScoreRange.objects.all().count()
+        context['kpisp_total'] = KPIScorePenalty.objects.all().count()
         context['kpd_total'] = KPD.objects.all().count()
         return context
 

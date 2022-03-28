@@ -67,3 +67,19 @@ class Dashboard(LoginRequiredMixin,ListView):
         return context
 
 
+class Employee_Register_View(CreateView):
+    model = get_user_model()
+    form_class  = RegistrationForm
+    # Need to find a way to add the user_form
+    template_name = 'hrms/registrations/register.html'
+    
+    success_url = reverse_lazy('hrms:employee_login')
+    
+class Employee_Login_View(LoginView):
+    model = get_user_model()
+    form_class = LoginForm
+    template_name = 'hrms/registrations/login.html'
+
+    def get_success_url(self):
+        url = resolve_url('hrms:employee_dashboard')
+        return url

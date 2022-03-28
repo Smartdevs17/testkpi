@@ -34,7 +34,11 @@
                     {{form.first_name}}
                     <i class="fas fa-user"></i>
                 </div>
-
+                <div class="form-control">
+                    <!-- <input type="text" placeholder="Username"> -->
+                    {{form.middle_name}}
+                    <i class="fas fa-user"></i>
+                </div>
                 <div class="form-control">
                     <!-- <input type="text" placeholder="Username"> -->
                     {{form.last_name}}
@@ -44,11 +48,6 @@
                     <!-- <input type="text" placeholder="Username"> -->
                     {{form.mobile}}
                     <i class="fas fa-user"></i>
-                </div>
-                <div class="form-control">
-                    <!-- <input type="text" placeholder="Email"> -->
-                    {{form.email}}
-                    <i class="fas fa-envelope"></i>
                 </div>
                 <div class="form-control">
                     <!-- <input type="text" placeholder="Username"> -->
@@ -82,8 +81,17 @@
                     <!-- <input type="text" placeholder="Username"> -->
                     {{form.account_no}}
                 </div>
-                <button  class="submit">Submit</button>
-                <button class="login"><a href=" {% url "hrms:employee_login"%} ">Login</a></button>
+                <div  class="" >
+                    <button style=" float: left; background-image: linear-gradient(to right, #8b33c5, #15a0e1); padding:15px; font-size:20px; color:#fff; " class=""> <a style="text-decoration: none;" href=" {% url "hrms:employee_dashboard"%} ">Cancel</a> </button>
+                    <button class="" style=" float: right; background-image: linear-gradient(to right, #8b33c5, #15a0e1); padding:15px; font-size:20px; color:#fff; "  type="submit">Update Changes</button>
+                </div>
+        
+
+                <!-- <div class="button-container">
+                    <button type="submit" class="button-update"> <a style="text-decoration: none;" href=" {% url "hrms:admin_setting"%} ">Cancel</a> </button>
+                      <button type="submit" class="button-update"> Create Designation </button>
+                  </div> -->
+
             </form>
         </div>
     </section>

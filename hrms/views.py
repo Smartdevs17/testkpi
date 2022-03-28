@@ -24,6 +24,8 @@ from hrms.manager_view import *
 from hrms.others import *
 from hrms.auth import *
 from datetime import datetime
+
+
 # def index(request):
 #     return render(request,"hrms/templates/hrms/home/home.html")
 

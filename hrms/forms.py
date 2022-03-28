@@ -1,7 +1,8 @@
 from django.contrib.auth import get_user_model
 from .models import ( Employee,Department,Kin,Attendance, Leave,Unit,EmployeeType,
                     SBU_Directorate,Unit,Designation,Complaint,
-                    GradeLevel,Position,Station,Bank,EmployeeType,KPIScorePenalty,
+                    # GradeLevel,
+                    Position,Station,Bank,EmployeeType,KPIScorePenalty,
                     SKPD,MKPD,KPI_Evalutation,KPD,KPIScoreRange,Employment)
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django import forms
@@ -38,8 +39,8 @@ class EmployeeTypeForm(forms.ModelForm):
         model = EmployeeType
         fields = "__all__"
         widgets={
-            'employee_type_id': forms.TextInput(attrs={"placeholder":"Employee Type ID"}),
-            'employee_type':forms.Select(),
+            'employeetype_id': forms.TextInput(attrs={"placeholder":"Employee Type ID"}),
+            'employeetype':forms.TextInput(),
         }
 
 class DirectorateForm(forms.ModelForm):
@@ -77,9 +78,9 @@ class UnitForm(forms.ModelForm):
         fields = "__all__"
         widgets={
             'unit_id': forms.TextInput(attrs={"placeholder":"Unit ID"}),
-            # 'head_of_unit': forms.TextInput(attrs={"placeholder":"Head Of Unit Name"}),
            ' head_of_unit': forms.Select(),
             'dept_id':forms.Select(),
+            'unit_name': forms.TextInput(attrs={"placeholder":"Unit Name"}),
         } 
 
 class DesignationForm(forms.ModelForm):
@@ -93,21 +94,19 @@ class DesignationForm(forms.ModelForm):
             'designation': forms.Textarea(attrs={"placeholder":"Designation"}),
         } 
 
-class GradeLevelForm(forms.ModelForm):
-    # gradelevel_id = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'GradeLevel ID'}))
-    # gradelevel = forms.IntegerField( min_value=1,max_value=17 ,required=False,widget=forms.NumberInput())
-    class Meta:
-        model = GradeLevel
-        fields = "__all__"
-        widgets={
-            'gradelevel_id': forms.TextInput(attrs={"placeholder":"GradeLevel ID"}),
-            'gradelevel': forms.NumberInput(),
-        } 
+# class GradeLevelForm(forms.ModelForm):
+#     # gradelevel_id = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'GradeLevel ID'}))
+#     # gradelevel = forms.IntegerField( min_value=1,max_value=17 ,required=False,widget=forms.NumberInput())
+#     class Meta:
+#         model = GradeLevel
+#         fields = "__all__"
+#         widgets={
+#             'gradelevel_id': forms.TextInput(attrs={"placeholder":"GradeLevel ID"}),
+#             'gradelevel': forms.NumberInput(),
+#         } 
 
 class PositionForm(forms.ModelForm):
-    # postion_code= forms.CharField(max_length=20, widget=forms.TextInput(attrs={'placeholder':'Position'}))
-    # position = forms.CharField(max_length=20, widget=forms.TextInput(attrs={ 'placeholder':'Position'}))
-    # description = forms.CharField(max_length=1000,widget=forms.Textarea(attrs={ 'placeholder':'Description'}))
+  
     class Meta:
         model = Position
         fields = "__all__"
@@ -118,12 +117,7 @@ class PositionForm(forms.ModelForm):
         } 
 
 class StationForm(forms.ModelForm):
-    # station_id = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'placeholder':'Station ID'}))
-    # station_name = forms.CharField(max_length=20, widget=forms.TextInput(attrs={ 'placeholder':'Station Name'}))
-    # station_location = forms.CharField(max_length=20, widget=forms.Textarea(attrs={'placeholder':'Station Location'}))
-    # station_address = forms.CharField(max_length=20, widget=forms.Textarea(attrs={'placeholder':'Station Address'}))
-    # station_email_address = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder':"Station Email"}))
-    # station_manager = forms.ModelChoiceField(Employee.objects.filter(emp_id="emp_id"),required=False,widget=forms.Select()) 
+
     class Meta:
         model = Station
         fields = '__all__'
@@ -144,7 +138,6 @@ class EmployeeForm (forms.ModelForm):
     last_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Last Name'}))
     mobile = forms.CharField( widget=forms.TextInput(attrs={'placeholder':'Mobile Number'}))
     dob = forms.DateField()
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder':'Valid Email'}))
     emergency = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Relative Mobile Number'}))
     gender = forms.ChoiceField(choices=Employee.GENDER,widget=forms.Select(attrs={}))
     language = forms.ChoiceField(choices=Employee.LANGUAGE,widget=forms.Select(attrs={}))
@@ -175,36 +168,24 @@ class UserForm(forms.ModelForm):
         fields = ('username', 'email', 'password')
 
 class NewEmployeeForm (forms.ModelForm):
-    # thumb = forms.ImageField(widget=forms.ClearableFileInput(attrs={}))
-    # user = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Username'}))
-    # first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'First Name'}))
-    # last_name = forms.CharField( widget=forms.TextInput(attrs={'placeholder':'Last Name'}))
-    # mobile = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Mobile Number'}))
-    # emergency = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Relative Mobile Number'}))
-    # gender = forms.ChoiceField(choices=Employee.GENDER,widget=forms.Select(attrs={}))
-    # dob = forms.DateField(widget=forms.DateInput(attrs={'type':'date'}))    # department = forms.ModelChoiceField(Department.objects.all(),required=True, empty_label='Select a department',widget=forms.Select(attrs={}))
-    # language = forms.ChoiceField(choices=Employee.LANGUAGE,widget=forms.Select(attrs={}))
-    # email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder':'Valid Email'}))
-    # bank = forms.CharField( widget=forms.TextInput(attrs={'placeholder':'Bank Name'}))
-    # account_no = forms.CharField( widget=forms.TextInput(attrs={'placeholder':'Account Number'})
-    # thumb = forms.ImageField(label='Attach a Passport Photograph',required=False,widget=forms.FileInput(attrs={'class':'form-control mt-2'}))
+  
     class Meta:
         model = Employee
         # username = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Username'}))
-        fields = ['first_name','thumb', 'last_name',"dob", 'mobile','account_no','emergency','bank','language',"email"]
+        fields = ['first_name',"middle_name",'thumb', 'last_name',"dob", 'mobile','account_no','emergency','bank','language']
         widgets={
             # 'user':forms.TextInput(attrs={"placeholder":"Username"}),
             'first_name':forms.TextInput(attrs={"placeholder":"First Name"}),
+            'middle_name':forms.TextInput(attrs={"placeholder":"Middle Name"}),
             'last_name':forms.TextInput(attrs={"placeholder":"Last Name"}),
             'mobile':forms.TextInput(attrs={"placeholder":"Mobile Number"}),
             'emergency':forms.TextInput(attrs={"placeholder":"Relative Mobile Number"}),
-            'email':forms.TextInput(attrs={"placeholder":"Valid Email"}),
             'dob':forms.DateInput(attrs={"type": "date"}),
             'bank':forms.TextInput(attrs={"placeholder":"Bank Name"}),
             'account_no':forms.TextInput(attrs={"placeholder":"Account Number"}),
             "thumb":forms.FileInput(attrs={}),
             "language":forms.Select(attrs={}),
-            "gender": forms.Select(attrs={})
+            "gender": forms.Select(attrs={}),
         }
 
 
@@ -276,7 +257,7 @@ class EmploymentForm(forms.ModelForm):
             "department": forms.Select(),
             "unit": forms.Select(),
             "designation": forms.Select(),
-            "grade_level": forms.Select(),
+            "gradelevel": forms.Select(),
             "position": forms.Select(),
             "step": forms.Select(),
             "doe": forms.DateInput(),
@@ -284,23 +265,9 @@ class EmploymentForm(forms.ModelForm):
 
 
 
-# class RecruitmentForm(forms.ModelForm):
-#     class Meta:
-#         model=Recruitment
-#         fields = '__all__'
-#         widgets = {
-#             'first_name':forms.TextInput(attrs={}),
-#             'last_name':forms.TextInput(attrs={}),
-#             'position':forms.TextInput(attrs={}),
-#             'email':forms.EmailInput(attrs={}),
-#             'phone':forms.TextInput(attrs={}),
-#         }
     
 class KPDForm(forms.ModelForm):
-        # sbu_id = forms.ModelChoiceField(SBU_Directorate.objects.filter(sbu_id="sbu_id"),required=False,widget=forms.Select())
-        # dept_id = forms.ModelChoiceField(Department.objects.filter(dept_id="dept_id"),required=False,widget=forms.Select())
-        # unit_id = forms.ModelChoiceField(Unit.objects.filter(unit_id="unit_id"),required=False,widget=forms.Select())
-        # description = forms.CharField(max_length=1000,widget=forms.Textarea(attrs={ 'placeholder':'Description'}))
+     
         class Meta:
             model = KPD
             fields = "__all__"
@@ -308,12 +275,12 @@ class KPDForm(forms.ModelForm):
             'sub_id':forms.Select(),
             'dept_id':forms.Select(),
             'unit_id':forms.Select(),
-            'description': forms.Textarea(attrs={"placeholder":"KPD Description"}),
+            'kpd': forms.TextInput(attrs={"placeholder":"KPD "}),
+            'description': forms.Textarea(attrs={"placeholder":" Description"}),
         }          
 
 class KPIScoreRangeForm(forms.ModelForm):
-    # kpiscore_range = forms.IntegerField(required=False,widget=forms.NumberInput(),min_value=0,max_value=100)
-    # kpiscore_remark = forms.CharField(widget=forms.TextInput(attrs={ 'placeholder':'Remark'}))
+ 
     class Meta:
         model = KPIScoreRange
         fields = ["kpiscore_range_min","kpiscore_range_max","kpiscore_remark"]
@@ -324,9 +291,7 @@ class KPIScoreRangeForm(forms.ModelForm):
         }  
 
 class KPIScorePenaltyForm(forms.ModelForm):
-    # kpiscore_range = forms.ModelChoiceField(KPIScorePenalty.objects.filter(kpiscore_range_id=int()),required=False,widget=forms.Select())
-    # percentage_penalty= forms.IntegerField(required=False,widget=forms.NumberInput(),min_value=0,max_value=100)
-    # paybenchmark = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'No Pay Cut'}))
+
     class Meta:
         model = KPIScorePenalty
         fields = ["kpiscore_range","percentage_penalty","paybenchmark"]
@@ -341,65 +306,46 @@ class SKPDForm(forms.ModelForm):
     def __init__(self,*args,**kwargs):
         self.request = kwargs.pop("request")
         super(SKPDForm,self).__init__(*args,**kwargs)
-        dept = get_object_or_404(Department,head_of_dept__user=self.request.user) 
-        # dept = Employment.objects.filter(department=dept)
-        # print(dept)   
-        # employees = Employment.objects.filter(department=dept)
-        # print(employees)
-        self.fields['employee'].queryset = Employment.objects.filter(department=dept)
+        admin = get_object_or_404(Employment,employee__user=self.request.user) 
+        staff = get_object_or_404(Department,head_of_dept__user=self.request.user) 
+        self.fields['dept'].queryset = Department.objects.filter(dept_name=staff)
+        self.fields['employee'].queryset = Employment.objects.filter(department=staff)
+        self.fields['kpd'].queryset = KPD.objects.filter(dept_id=admin.department)
 
 
     class Meta:
         model = SKPD
-        fields = ["sbu","week",'employee',"dept","kpd","weight","expected_time_of_delivery","unit"]
+        # fields = ["sbu","week",'employee',"dept","kpd","weight","expected_time_of_delivery","unit"]
+        fields = ["dept",'employee',"kpd","weight","expected_time_of_delivery","period"]
+
         widgets={
             # 'name': forms.TextInput(attrs={"placeholder": "Project Name"}),     
-            'sbu': forms.Select(),
-            'unit': forms.Select(),
-            "week": forms.Select(attrs={}),
+            # 'sbu': forms.Select(attrs={}),
+            # 'unit': forms.Select(),
+            "period": forms.Select(attrs={}),
             "dept": forms.Select(attrs={}),
             "kpd": forms.Select(attrs={}),
             "weight": forms.NumberInput(),
             "employee":forms.Select(),
-            "expected_time_of_delivery": forms.DateInput(attrs={"type":"date"})
+            "expected_time_of_delivery": forms.TextInput(attrs={})
 
         }
 
 class MKPDForm(forms.ModelForm):
-    skpd = forms.ModelChoiceField(SKPD.objects.filter(employee=int()),required=False,widget=forms.Select()) 
-    # employee = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'First Name'}))
-    # week = forms.ChoiceField(choices=MKPD.WEEK,widget=forms.Select(attrs={}))
-    # time_in = forms.TimeField()
-    # time_out = forms.TimeField()
-    # approved = forms.ChoiceField(choices=MKPD.STATUS,widget=forms.Select(attrs={}))
-    # description = forms.CharField(max_length=1000,widget=forms.Textarea(attrs={ 'placeholder':'Description'}))
-
-    # def __init__(self,*args,**kwargs):
-    #     initial = {
-    #         "skpd": 1
-    #     }
-    #     if kwargs.has_key("initial"):
-    #         kwargs["initial"].update(initial)
-
-    #     else:
-    #         kwargs["initial"] = initial
-    #     super(MKPDForm,self).__init__(*args,**kwargs)
-    #     self.fields["skpd"].widget=forms.HiddenInput()
-
 
     class Meta:
         model = MKPD
-        # period = forms.CharField( disabled=True, widget=forms.TextInput())
         fields = ["week","approved","description",'time_in','time_out',"date"]
-        # employee = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Username'}))
+    
+ 
         widgets={
-            # 'employee': forms.Select(),
-            # 'period': forms.TextInput(attrs={"disabled": True}),
+            # "period": forms.Select(attrs={}),
+            "skpd": forms.Select(attrs={}),
             "week": forms.Select(attrs={}),
             "approved": forms.Select(attrs={}),
             'time_in': forms.TextInput(),
             'time_out': forms.TextInput(),
-            'description':forms.Textarea(attrs={ "class":"description", "placeholder":"Enter your remarks"}),
+            'description':forms.Textarea(attrs={  "placeholder":"Enter your remarks"}),
             "date": forms.DateInput(attrs={"type": "date"}),
         
         }
@@ -420,28 +366,23 @@ class MKPDForm(forms.ModelForm):
 
 class KPI_EvalutationForm(forms.ModelForm):
     
-    # def __init__(self,*args,**kwargs):
-    #     self.request = kwargs.pop("request")
-    #     super(SKPDForm,self).__init__(*args,**kwargs)
-    #     dept = get_object_or_404(Department,head_of_dept__user=self.request.user) 
-    #     # dept = Employment.objects.filter(department=dept)
-    #     print(dept)   
-    #     employees = Employment.objects.filter(department=dept)
-    #     print(employees)
-    #     self.fields['employee'].queryset = Employment.objects.filter(department=dept)   
-         
+
     class Meta:
         model = KPI_Evalutation
-        fields = ["sbu","dept","mkpd","skpd","week","score","remark","approved","comment"]
+        # fields = ["sbu","dept","mkpd","skpd","week","score","remark","approved","comment"]
+        fields = ["score","remark","approved","comment"]
+
+            
+
+         
         widgets={
             'remark': forms.TextInput(),
             'comment': forms.Select(),
-            'mkpd': forms.Select(),
-            'sbu': forms.Select(),
-            # 'unit': forms.Select(),
-            "week": forms.Select(attrs={}),
-            "dept": forms.Select(attrs={}),
-            "skpd": forms.Select(attrs={}),
+            # 'employee': forms.TextInput(attrs={"disbled": "True"}),
+            # 'mkpd': forms.Select(),
+            # 'period': forms.Select(),
+            # "week": forms.Select(attrs={}),
+            # "skpd": forms.Select(attrs={}),
             "score": forms.NumberInput(),
             'approved': forms.Select(),
         }
@@ -450,9 +391,6 @@ class KPI_EvalutationForm(forms.ModelForm):
 
 
 class ComplaintForm(forms.ModelForm):
-    # postion_code= forms.CharField(max_length=20, widget=forms.TextInput(attrs={'placeholder':'Position'}))
-    # position = forms.CharField(max_length=20, widget=forms.TextInput(attrs={ 'placeholder':'Position'}))
-    # description = forms.CharField(max_length=1000,widget=forms.Textarea(attrs={ 'placeholder':'Description'}))
     class Meta:
         model = Complaint
         fields = ['approved','description']
