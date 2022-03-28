@@ -81,7 +81,9 @@ class SBU_Directorate(models.Model):
 
     def __str__(self):
         return self.sbu_name
-
+    
+    def get_absolute_url(self):
+        return reverse("hrms:sbu_detail", kwargs={"pk": self.sbu_id})
 
 class Department(models.Model):
     dept_id = models.CharField(max_length=70, primary_key=True)
@@ -95,7 +97,7 @@ class Department(models.Model):
         return self.dept_name
 
     def get_absolute_url(self):
-        return reverse("hrms:dept_detail", kwargs={"pk": self.pk})
+        return reverse("hrms:dept_detail", kwargs={"pk": self.dept_id})
 
 class Unit(models.Model):
     unit_id = models.CharField(max_length=70, primary_key=True,default='unit'+str(random.randrange(100,999,1)))
