@@ -92,7 +92,9 @@
                         <tr>
                             <!-- <th style="padding: 15px;"> S/N </th> -->
                             <th style="padding: 15px;"> Department ID </th>
+                            <th style="padding: 15px;"> SBU ID </th>
                             <th style="padding: 15px;"> Department Name </th>
+                            <th style="padding: 15px;"> Head Of Department </th>
                             <th style="padding: 15px;"> Action </th>
                             <th style="padding: 15px;"></th>
                         </tr>
@@ -103,9 +105,10 @@
                         {% for dept in depts %}
 
                         <tr>
-                            <!-- <td>  {{bank.id}} </td> -->
                             <td>  {{dept.dept_id}} </td>
+                            <td>  {{dept.sbu_id}} </td>
                             <td>  {{dept.dept_name}} </td>
+                            <td>  {{dept.head_of_dept}} </td>
                             <td> <h3><a href=" {% url "hrms:dept_detail" pk=dept.dept_id %}">View</a></h3> </td>
                         </tr>
 

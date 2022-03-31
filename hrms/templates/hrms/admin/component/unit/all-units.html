@@ -47,10 +47,7 @@
                 <span class="material-icons-sharp"> settings </span>
                 <h3> Settings </h3>
              </a>
-             <!-- <a href="{% url 'hrms:employment_new' %}">
-                <span class="material-icons-sharp"> add </span>
-                <h3> Add Employee </h3>
-             </a> -->
+         
  
              <a href=" {% url "hrms:admin_logout" %} ">
                 <span class="material-icons-sharp"> logout </span>
@@ -90,8 +87,9 @@
                 <table style="margin: 25px;" >
                     <thead>
                         <tr>
-                            <!-- <th style="padding: 15px;"> S/N </th> -->
                             <th style="padding: 15px;"> Unit ID </th>
+                            <th style="padding: 15px;"> SBU ID </th>
+                            <th style="padding: 15px;"> Department ID </th>
                             <th style="padding: 15px;"> Unit Name </th>
                             <th style="padding: 15px;"> Action </th>
                             <th style="padding: 15px;"></th>
@@ -103,8 +101,9 @@
                         {% for unit in units %}
 
                         <tr>
-                            <!-- <td>  {{unit.id}} </td> -->
                             <td>  {{unit.unit_id}} </td>
+                            <td>  {{unit.dept_id.sbu_id}} </td>
+                            <td>  {{unit.dept_id}} </td>
                             <td>  {{unit.unit_name}} </td>
                             <td> <h3><a href=" {% url "hrms:unit_detail" pk=unit.unit_id %}">View</a></h3> </td>
                         </tr>
