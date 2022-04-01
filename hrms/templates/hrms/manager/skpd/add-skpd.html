@@ -81,16 +81,9 @@
                         {{form.period}}
                     </div>
 
-
-                    <h3>Dept</h3>
+                    <h3>Key Performance Deliverables </h3>
                     <div class="form-control">
-                        {{form.dept}}
-                    </div>
-
-                    <h3>Employee</h3>
-                    <div class="form-control">
-                        {{form.employee}}
-                    
+                        {{form.kpd}}
                     </div>
 
                     <h3>Weight</h3>
@@ -102,11 +95,24 @@
                     <div class="form-control">
                         {{form.expected_time_of_delivery}}
                     </div>
-                    <h3>Key Performance Deliverables </h3>
+
+                    <h3>Employee</h3>
                     <div class="form-control">
-                        {{form.kpd}}
+                        {{form.employee}}
+                    
                     </div>
 
+                    <!-- <h3>Dept</h3>
+                    <div class="form-control">
+                        {{form.dept}}
+                    </div> -->
+
+                   
+
+                  
+
+                   
+                 
                     <div class="button-container">
                         <button class="button-update"> Submit </button>
                         <button class="button-update"> <a href=" {% url "hrms:skpd_all" %} ">Cancel</a> </button>

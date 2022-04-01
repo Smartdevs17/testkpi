@@ -309,22 +309,19 @@ class SKPDForm(forms.ModelForm):
         super(SKPDForm,self).__init__(*args,**kwargs)
         admin = get_object_or_404(Employment,employee__user=self.request.user) 
         staff = get_object_or_404(Department,head_of_dept__user=self.request.user) 
-        self.fields['dept'].queryset = Department.objects.filter(dept_name=staff)
+        # self.fields['dept'].queryset = Department.objects.filter(dept_name=staff)
         self.fields['employee'].queryset = Employment.objects.filter(department=staff)
         self.fields['kpd'].queryset = KPD.objects.filter(dept_id=admin.department)
 
 
     class Meta:
         model = SKPD
-        # fields = ["sbu","week",'employee',"dept","kpd","weight","expected_time_of_delivery","unit"]
-        fields = ["dept",'employee',"kpd","weight","expected_time_of_delivery","period"]
+        fields = ['employee',"kpd","weight","expected_time_of_delivery","period"]
 
         widgets={
-            # 'name': forms.TextInput(attrs={"placeholder": "Project Name"}),     
-            # 'sbu': forms.Select(attrs={}),
-            # 'unit': forms.Select(),
+       
             "period": forms.Select(attrs={}),
-            "dept": forms.Select(attrs={}),
+            # "dept": forms.Select(attrs={}),
             "kpd": forms.Select(attrs={}),
             "weight": forms.NumberInput(),
             "employee":forms.Select(),

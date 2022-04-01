@@ -29,7 +29,7 @@ date_period = range_of_months(start_date,end_date)
 
 class Employee(models.Model):
     user= models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
-    emp_id = models.CharField(max_length=70, default='emp'+str(random.randrange(100,999,1)))
+    emp_id = models.CharField(max_length=70)
     LANGUAGE = (('english','ENGLISH'),('yoruba','YORUBA'),('hausa','HAUSA'),('french','FRENCH'))
     GENDER = (('male','MALE'), ('female', 'FEMALE'),('other', 'OTHER'))
     thumb = models.ImageField(blank=True,null=True)
@@ -64,7 +64,7 @@ class Employee(models.Model):
 
 class EmployeeType(models.Model):
     # EMPLOYEETYPE = (('Permanent Staff', 'Permanent Staff'), ('Contract Staff', 'Contract Staff'),('NYSC', 'NYSC'),('SIWES', 'SIWES'),('Freelance', 'Freelance'))
-    employeetype_id = models.CharField(max_length=70, primary_key=True,default="emptype"+str(random.randrange(100,999,1)))
+    employeetype_id = models.CharField(max_length=70, primary_key=True)
     employeetype = models.CharField(max_length=15 )
 
     def __str__(self):
@@ -74,7 +74,7 @@ class EmployeeType(models.Model):
         return reverse("hrms:employeetype_detail", kwargs={"pk": self.employeetype_id})
 
 class SBU_Directorate(models.Model):
-    sbu_id =  models.CharField(max_length=70,primary_key=True,default='sub'+str(random.randrange(100,999,1)))
+    sbu_id =  models.CharField(max_length=70,primary_key=True)
     sbu_name = models.CharField(max_length=50)
     sbu_email = models.EmailField(max_length=30,null=False)
     director_of_service = models.ForeignKey(Employee, on_delete=models.CASCADE)
@@ -101,7 +101,7 @@ class Department(models.Model):
         return reverse("hrms:dept_detail", kwargs={"pk": self.dept_id})
 
 class Unit(models.Model):
-    unit_id = models.CharField(max_length=70, primary_key=True,default='unit'+str(random.randrange(100,999,1)))
+    unit_id = models.CharField(max_length=70, primary_key=True)
     unit_name = models.CharField(max_length=70, null=False, blank=False)
     head_of_unit = models.ForeignKey(Employee, on_delete=models.CASCADE)
     dept_id = models.ForeignKey(Department,on_delete=models.SET_NULL, null=True)
@@ -112,7 +112,7 @@ class Unit(models.Model):
     def get_absolute_url(self):
         return reverse("hrms:dept_detail", kwargs={"pk": self.unit_id})
 class Designation(models.Model):
-    design_id = models.CharField(max_length=70, primary_key=True,default='design'+str(random.randrange(100,999,1)))
+    design_id = models.CharField(max_length=70, primary_key=True)
     designation = models.TextField(max_length=1000,null=True,blank=True, default='No Description')
 
     def __str__(self):
@@ -128,7 +128,7 @@ class Designation(models.Model):
 #         return self.gradelevel_id
 
 class Position(models.Model):
-    position_code = models.CharField(max_length=70, primary_key=True,default='pc'+str(random.randrange(100,999,1)))
+    position_code = models.CharField(max_length=70, primary_key=True)
     position = models.CharField(max_length=70)
     description = models.TextField(max_length=1000,null=True,blank=True, default='')
 
@@ -151,7 +151,7 @@ class Station(models.Model):
 
 
 class Bank(models.Model):
-    bank_id = models.CharField(max_length=70, primary_key=True,default='bank'+str(random.randrange(100,999,1)))
+    bank_id = models.CharField(max_length=70, primary_key=True)
     bank = models.CharField(max_length=150)
 
     def __str__(self):
@@ -161,7 +161,7 @@ class Bank(models.Model):
         return reverse("hrms:bank_new", kwargs={"pk": self.bank_id}) 
 
 class Employment(models.Model):
-    employ_id = models.CharField(max_length=70, default='emp'+str(random.randrange(1000,9999,1)),primary_key=True)
+    employ_id = models.CharField(max_length=70,primary_key=True)
     employee = models.OneToOneField(Employee, on_delete=models.CASCADE,null=True,unique=True)
     doe = models.DateTimeField(default=timezone.now)
     employee_type = models.ForeignKey(EmployeeType,on_delete=models.CASCADE, null=True) 

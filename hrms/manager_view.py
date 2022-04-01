@@ -400,6 +400,11 @@ class SKPD_New(LoginRequiredMixin,CreateView):
         kwargs['request'] = self.request
         # kwargs.update({"user":self.request.user})
         return kwargs
+    
+    def form_valid(self,form):
+        user = get_object_or_404(Department,head_of_dept__user=self.request.user)
+        form.instance.dept = user
+        return super().form_valid(form)
 
 class SKPD_Update(LoginRequiredMixin,UpdateView):
     model = SKPD
