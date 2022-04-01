@@ -27,7 +27,22 @@
             <p class="welcome-message">Please, provide the required details to proceed and create an account</p>
 
             <form method="POST" class="login-form">
-                {{form.errors}}
+
+                {% if form.errors %}
+                <div  class="alert alert-danger" style=" 
+                position: relative;
+                padding: .75rem 1.25rem;
+                margin-bottom: 1rem;
+                border: 1px solid transparent;
+                border-radius: .25rem;
+                color: #853025;
+                background-color: #ffdfda;
+                border-color: #ffd2cc;" >
+                    {{form.errors}}
+                </div>
+
+                {% endif %}
+                
                 {%csrf_token%}
                 <div class="form-control">
                     <!-- <input type="text" placeholder="Username"> -->

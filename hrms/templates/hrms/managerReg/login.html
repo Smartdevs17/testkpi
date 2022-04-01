@@ -28,7 +28,22 @@
 
             <form method="POST" class="login-form">
                 {%csrf_token%}
-                {{form.errors}}
+
+                {% if form.errors %}
+                <div  class="alert alert-danger" style=" 
+                position: relative;
+                padding: .75rem 1.25rem;
+                margin-bottom: 1rem;
+                border: 1px solid transparent;
+                border-radius: .25rem;
+                color: #853025;
+                background-color: #ffdfda;
+                border-color: #ffd2cc;" >
+                    {{form.errors}}
+                </div>
+
+                {% endif %}
+                
                 <div class="form-control">
                     <!-- <input type="text" placeholder="Username"> -->
                     {{form.username}}
