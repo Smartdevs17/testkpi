@@ -75,10 +75,10 @@ class DepartmentForm(forms.ModelForm):
 class UnitForm(forms.ModelForm):
     class Meta:
         model = Unit
-        fields = "__all__"
+        fields = ["unit_id","dept_id","unit_name"]
         widgets={
             'unit_id': forms.TextInput(attrs={"placeholder":"Unit ID"}),
-           ' head_of_unit': forms.Select(),
+        #    ' head_of_unit': forms.Select(),
             'dept_id':forms.Select(),
             'unit_name': forms.TextInput(attrs={"placeholder":"Unit Name"}),
         } 

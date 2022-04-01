@@ -89,7 +89,7 @@ class SBU_Directorate(models.Model):
 class Department(models.Model):
     dept_id = models.CharField(max_length=70, primary_key=True)
     dept_name = models.CharField(max_length=70, null=False, blank=False)
-    head_of_dept = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    head_of_dept = models.ForeignKey(Employee, on_delete=models.CASCADE,default=1)
     description = models.TextField(max_length=1000,null=True,blank=True, default='No Description')
     sbu_id = models.ForeignKey(SBU_Directorate,on_delete=models.SET_NULL, null=True)
     
