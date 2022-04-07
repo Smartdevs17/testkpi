@@ -69,9 +69,12 @@ class Admin_Dashboard(LoginRequiredMixin,SuperuserRequiredMixin,ListView):
         context['manager_count'] = SBU_Directorate.objects.all().count()
         context['station_count'] = Station.objects.all().count()
         context['unit_total'] = Unit.objects.all().count()
-        # context['grade_total'] = GradeLevel.objects.all().count()
         context['position_total'] = Position.objects.all().count()
-        context['bank_total'] = Bank.objects.all().count()    
+        context['bank_total'] = Bank.objects.all().count()  
+        context['kpd_total'] = KPD.objects.all().count()   
+        context['kpisp_total'] = KPIScorePenalty.objects.all().count()    
+        context['kpisr_total'] = KPIScoreRange.objects.all().count()    
+  
         context['workers'] = Employee.objects.order_by('-emp_id')
         return context 
 

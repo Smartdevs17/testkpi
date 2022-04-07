@@ -501,8 +501,8 @@ class KPISP_All(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['kpisp_total'] = KPIScorePenalty.objects.all().count()    
-        context['kpisp'] = KPIScorePenalty.objects.order_by('-kpisp_id')
+        context['kpisp_total'] = KPIScorePenalty.objects.all().count()   
+        context['kpisps'] = KPIScorePenalty.objects.order_by('-kpisp_id')
         return context
 
   

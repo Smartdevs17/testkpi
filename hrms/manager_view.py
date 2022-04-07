@@ -611,10 +611,14 @@ class MKPD_All(LoginRequiredMixin,ListView):
             # staff = Employment.objects.get(employee=self.kwargs["pk"])
             # print(staff_kpd[0])
             # print(staff)
-            context["staff"] = Employment.objects.filter(employee=self.kwargs["pk"])
-            context["projects"] =  SKPD.objects.filter(employee__employee=self.kwargs["pk"])
+            context["staff"] = Employment.objects.get(employee=self.kwargs["pk"])
+            staff = Employment.objects.get(employee=self.kwargs["pk"])
+            print(staff)
+            context["projects"] =  SKPD.objects.filter(Q(employee__employee=self.kwargs["pk"]) & Q(period__month=datetime.date.today().month))
             # context["projects"] =  Employment.objects.filter(staff__employee=self.kwargs["pk"])
-            context["total"] = KPD.objects.filter(staff_kpd__employee__employee=self.kwargs["pk"]).aggregate(total=Sum("staff_kpd__weight"))
+            context["total"] = KPD.objects.filter( Q(staff_kpd__employee__employee=self.kwargs["pk"]) & Q(staff_kpd__period__month=datetime.date.today().month)).aggregate(total=Sum("staff_kpd__weight"))
+            total =  KPD.objects.filter( Q(staff_kpd__employee__employee=self.kwargs["pk"]) & Q(staff_kpd__period__month=datetime.date.today().month)).aggregate(total=Sum("staff_kpd__weight"))
+            print(total)
             return context
         except ObjectDoesNotExist:
             return context

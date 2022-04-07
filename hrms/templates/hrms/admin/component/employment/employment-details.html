@@ -23,70 +23,73 @@
             </div>
               <div class="middle">
                   <div style="margin: 10px;" class="left">
-                      <h1> {{employment.employee.first_name}} {{employment.employee.last_name}} </h1>
+                      <h1> Full Name:  {{employment.employee.first_name}} {{employment.employee.last_name}} </h1>
                   </div>
               
               </div>
               <div class="middle">
                 <div style="margin: 10px;" class="left">
-                    <h1> {{employment.doe}} </h1>
+                    <h1> DOB:  {{employment.doe}} </h1>
                 </div>
             
             </div>
             <div class="middle">
                 <div style="margin: 10px;" class="left">
-                    <h1> {{employment.employee_type}} </h1>
+                    <h1> Employmenttype:  {{employment.employee_type}} </h1>
                 </div>
             
             </div>
             <div class="middle">
                 <div style="margin: 10px;" class="left">
-                    <h1> {{employment.sbu_id}} </h1>
+                    <h1>SBU/Directorate {{employment.sbu_id}} </h1>
                 </div>
             
             </div>
             <div class="middle">
                 <div style="margin: 10px;" class="left">
-                    <h1> {{employment.station}} </h1>
+                    <h1>Department:  {{employment.department}} </h1>
                 </div>
             
             </div>
             <div class="middle">
                 <div style="margin: 10px;" class="left">
-                    <h1> {{employment.department}} </h1>
+                    <h1>Unit:  {{employment.unit}} </h1>
                 </div>
             
             </div>
             <div class="middle">
                 <div style="margin: 10px;" class="left">
-                    <h1> {{employment.unit}} </h1>
+                    <h1>Station:  {{employment.station}} </h1>
+                </div>
+            
+            </div>
+        
+            <div class="middle">
+                <div style="margin: 10px;" class="left">
+                    <h1>Position: {{employment.position}} </h1>
+                </div>
+            
+            </div>
+    
+            <div class="middle">
+                <div style="margin: 10px;" class="left">
+                    <h1>Designation:  {{employment.designation}} </h1>
                 </div>
             
             </div>
             <div class="middle">
                 <div style="margin: 10px;" class="left">
-                    <h1> {{employment.designation}} </h1>
+                    <h1>Step:  {{employment.step}} </h1>
                 </div>
             
             </div>
             <div class="middle">
                 <div style="margin: 10px;" class="left">
-                    <h1> {{employment.step}} </h1>
+                    <h1>GradeLevel:  {{employment.gradelevel}} </h1>
                 </div>
             
             </div>
-            <div class="middle">
-                <div style="margin: 10px;" class="left">
-                    <h1> {{employment.gradelevel}} </h1>
-                </div>
-            
-            </div>
-            <div class="middle">
-                <div style="margin: 10px;" class="left">
-                    <h1> {{employment.position}} </h1>
-                </div>
-            
-            </div>
+  
               <h3 style="float: right; "> <a style="color: red;" href=" {% url "hrms:employment_delete" pk=employment.employ_id %}">Delete</a> </h3>
               <h3 > <a style="color: blue;" href=" {% url "hrms:employment_update" pk=employment.employ_id %}">Update</a> </h3>
             </div>
