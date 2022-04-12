@@ -135,25 +135,14 @@
                         <div class="info">
                             <h3> {{rating.skpd.kpd.description}} </h3>
                             <small class="text-muted"> {{rating.remark}} </small>
-                            <h3><a href=" {% url "hrms:employee_complaint"%} ">Any Complaint</a></h3>
+                            <h3><a href=" {% url "hrms:employee_complaint"%} ">Any Complaint? </a></h3>
                         </div>
                         <h5 class="success"> +{{rating.score}}% </h5>
                     </div>
                 </div>
                 {% endfor %}
               
-                <div class=" item finance">
-                 <div class="icon">
-                     <span class="material-icons-sharp"> price_change</span>
-                    </div>
-                    <div class="right">
-                        <div class="info">
-                            <h3> PROJECT NAME </h3>
-                            <small class="text-muted"> SEE MORE </small>
-                        </div>
-                        <h5 class="success"> +10% </h5>
-                    </div>
-                </div>
+       
             </div>
         </div>
 

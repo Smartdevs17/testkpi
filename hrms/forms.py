@@ -323,7 +323,7 @@ class SKPDForm(forms.ModelForm):
             "period": forms.Select(attrs={}),
             # "dept": forms.Select(attrs={}),
             "kpd": forms.Select(attrs={}),
-            "weight": forms.NumberInput(),
+            "weight": forms.NumberInput(attrs={"max": 100}),
             "employee":forms.Select(),
             "expected_time_of_delivery": forms.TextInput(attrs={})
 
@@ -381,7 +381,7 @@ class KPI_EvalutationForm(forms.ModelForm):
             # 'period': forms.Select(),
             # "week": forms.Select(attrs={}),
             # "skpd": forms.Select(attrs={}),
-            "score": forms.NumberInput(),
+            "score": forms.NumberInput(attrs={"max": 100}),
             'approved': forms.Select(),
         }
 

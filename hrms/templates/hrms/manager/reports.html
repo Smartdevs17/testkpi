@@ -61,7 +61,8 @@
                   <!-- <th> HR Score </th> -->
                   <th> Final Avg Score </th>
                   <th> Station </th>
-                  <!-- <th> ED Comment </th> -->
+                  <th> ED Comment </th>
+                  <th> Final Verdict</th>
                   <th></th>
               </tr>
           </thead>
@@ -77,6 +78,42 @@
                   <!-- <td> {{employee.total_score}} </td> -->
                   <td> {{employee.total}} </td>
                   <td> {{employee.station}} </td>
+
+                  {% if employee.total in cond1 %}
+                  <td>Excellent</td>
+                  <td>No pay Cut</td>
+
+              {% endif %}
+
+              {% if employee.total in cond2 %}
+              <td>Good</td>
+              <td>No pay Cut</td>
+
+              {% endif %}
+
+              {% if employee.total in cond3 %}
+              <td>Average</td>
+              <td>5% pay Cut</td>
+
+              {% endif %}
+
+              {% if employee.total in cond4 %}
+              <td>Below Average (Warning Only)</td>
+              <td>10% pay Cut</td>
+
+              {% endif %}
+
+              {% if employee.total in cond5 %}
+              <td>Poor (Warning with 6-month probation)</td>
+              <td>15% pay Cut</td>
+
+              {% endif %}
+
+              {% if employee.total in cond6 %}
+              <td>Vary Poor (Disengagement/Management decision)</td>
+              <td>50% pay Cut</td>
+
+              {% endif %}
                   <!-- <td> {{employee.score}} </td> -->
                   <td> </td>
               </tr>
