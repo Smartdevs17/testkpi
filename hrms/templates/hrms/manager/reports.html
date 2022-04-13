@@ -114,6 +114,8 @@
               <td>50% pay Cut</td>
 
               {% endif %}
+
+             
                   <!-- <td> {{employee.score}} </td> -->
                   <td> </td>
               </tr>
@@ -121,7 +123,7 @@
             {% endfor %}
           </tbody>
       </table>
-      <button style="margin: 25px; border-radius: 5px; cursor: pointer; background-color:blue; padding:10px" > <a href="javascript:window.print()" > Print </a> </button>
+      <button style="margin: 25px; border-radius: 5px; cursor: pointer; background-color:blue; padding:10px" > <a href=" {% url "hrms:gen_report"%} " > Generate Report </a> </button>
   </div>
 </main>
  <!-- End of Main Body -->
