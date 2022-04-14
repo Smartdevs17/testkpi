@@ -38,7 +38,7 @@ from braces.views import LoginRequiredMixin,SuperuserRequiredMixin
 
 from datetime import datetime
 
-
+import math
 
 import datetime
 
@@ -263,7 +263,7 @@ class Report_View(LoginRequiredMixin,ListView):
         context = super().get_context_data(**kwargs) 
         try:
             # leaders = SKPD.objects.filter(task_submission__approved="APPROVED").annotate(total=Sum("task_submission__score")).order_by("-total")
-            leaders = Employment.objects.filter(report__approved="APPROVED").annotate(total=round(Avg("report__score")))
+            leaders = Employment.objects.filter(report__approved="APPROVED").annotate(total=math.floor(Avg("report__score")))
             tasks = Employment.objects.filter(report__approved="APPROVED").annotate(total=Sum("report__score"))
             # print(tasks[0].report.all())
             # ratings = MKPD.objects.filter(submissions__approved="APPROVED").annotate(Average=Sum("submissions__score"))
@@ -293,7 +293,7 @@ class Generate_Report(LoginRequiredMixin,ListView):
         context = super().get_context_data(**kwargs) 
         try:
             # leaders = SKPD.objects.filter(task_submission__approved="APPROVED").annotate(total=Sum("task_submission__score")).order_by("-total")
-            scores = Employment.objects.filter(report__approved="APPROVED").annotate(total=round(Avg("report__score")))
+            scores = Employment.objects.filter(report__approved="APPROVED").annotate(total=math.floor(Avg("report__score")))
             tasks = Employment.objects.filter(report__approved="APPROVED").annotate(total=Sum("report__score"))
             # print(tasks[0].report.all())
             # ratings = MKPD.objects.filter(submissions__approved="APPROVED").annotate(Average=Sum("submissions__score"))
