@@ -297,7 +297,6 @@ class Generate_Report(LoginRequiredMixin,ListView):
             tasks = Employment.objects.filter(report__approved="APPROVED").annotate(total=Sum("report__score"))
             # print(tasks[0].report.all())
             # ratings = MKPD.objects.filter(submissions__approved="APPROVED").annotate(Average=Sum("submissions__score"))
-            print(scores[1].total/5)
             context["kpi_count"] = KPI_Evalutation.objects.all().count()
             context["cond1"] = range(70,101)
             context["cond2"] = range(60,69)
