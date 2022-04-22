@@ -19,6 +19,8 @@ from django.utils import timezone
 from django.db.models import Q
 from braces.views import LoginRequiredMixin,SuperuserRequiredMixin
 
+from django.db.models import Func
+from django.db.models import FloatField
 
 
 
@@ -638,3 +640,38 @@ class Evaluation_Update(LoginRequiredMixin,UpdateView):
 
 class Evaluation_Delete(LoginRequiredMixin,DeleteView):
     pass
+
+
+
+class Round(Func):
+    function = "ROUND"
+    arity = 2
+
+
+class Admin_Report(LoginRequiredMixin,SuperuserRequiredMixin,ListView):
+    template_name = 'hrms/admin/dashboard/eva-report.html'
+    manager_url = 'hrms:admin_login'
+    model = get_user_model()
+    context_object_name = 'qset'            
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs) 
+        try:
+            # leaders = SKPD.objects.filter(task_submission__approved="APPROVED").annotate(total=Sum("task_submission__score")).order_by("-total")
+            scores = Employment.objects.filter(report__approved="APPROVED").annotate(total=Round(Avg("report__score"),0,output_field=FloatField()))
+            tasks = Employment.objects.filter(report__approved="APPROVED").annotate(total=Sum("report__score"))
+            # print(tasks[0].report.all())
+            # ratings = MKPD.objects.filter(submissions__approved="APPROVED").annotate(Average=Sum("submissions__score"))
+            context["kpi_count"] = KPI_Evalutation.objects.all().count()
+            context["cond1"] = range(70,101)
+            context["cond2"] = range(60,69)
+            context["cond3"] = range(50,59)
+            context["cond4"] = range(45,49)
+            context["cond5"] = range(40,44)
+            context["cond6"] = range(0,39)
+            kpis = KPIScorePenalty.objects.all()
+            # print(kpis[0])
+            # leaders = User.objects.filter(~Q(submissions=None)).filter(submissions__status="approved").annotate(total=Sum("submissions__task__points")).order_by("-total")
+            context["employees"] = scores
+            return context
+        except ObjectDoesNotExist:
+            return context

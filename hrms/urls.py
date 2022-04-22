@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin_dashboard/settings', views.Admin_Setting.as_view(), name='admin_setting'),
     path('admin_logout/', views.Admin_Logout_View.as_view(), name='admin_logout'),
     path("admin_dashboard/report_complaint",views.Complaint_Report.as_view(), name ="report_complaint"),
+    path('admin_dashboard/report/', views.Admin_Report.as_view(), name='admin_report'),
 
 
      # Manager Routes

@@ -268,8 +268,10 @@ class Report_View(LoginRequiredMixin,ListView):
         try:
             # leaders = SKPD.objects.filter(task_submission__approved="APPROVED").annotate(total=Sum("task_submission__score")).order_by("-total")
             # leaders = Employment.objects.filter(report__approved="APPROVED").annotate(total=Avg("report__score"))
-            scores = Employment.objects.filter(report__approved="APPROVED").annotate(total=Round(Avg("report__score"),0,output_field=FloatField()))
+            # scores = Employment.objects.filter(report__approved="APPROVED").annotate(total=Round(Avg("report__score"),0,output_field=FloatField()))
             tasks = Employment.objects.filter(report__approved="APPROVED").annotate(total=Sum("report__score"))
+            user = get_object_or_404(Department,head_of_dept__user=self.request.user)
+            scores = Employment.objects.filter(Q(report__approved="APPROVED") & Q(department=user)).annotate(total=Round(Avg("report__score"),0,output_field=FloatField()))
             # print(tasks[0].report.all())
             # ratings = MKPD.objects.filter(submissions__approved="APPROVED").annotate(Average=Sum("submissions__score"))
             # print(ratings)
@@ -298,7 +300,8 @@ class Generate_Report(LoginRequiredMixin,ListView):
         context = super().get_context_data(**kwargs) 
         try:
             # leaders = SKPD.objects.filter(task_submission__approved="APPROVED").annotate(total=Sum("task_submission__score")).order_by("-total")
-            scores = Employment.objects.filter(report__approved="APPROVED").annotate(total=Round(Avg("report__score"),0,output_field=FloatField()))
+            user = get_object_or_404(Department,head_of_dept__user=self.request.user)
+            scores = Employment.objects.filter(Q(report__approved="APPROVED") & Q(department=user)).annotate(total=Round(Avg("report__score"),0,output_field=FloatField()))
             tasks = Employment.objects.filter(report__approved="APPROVED").annotate(total=Sum("report__score"))
             # print(tasks[0].report.all())
             # ratings = MKPD.objects.filter(submissions__approved="APPROVED").annotate(Average=Sum("submissions__score"))
