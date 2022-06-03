@@ -103,7 +103,7 @@ class Department(models.Model):
 class Unit(models.Model):
     unit_id = models.CharField(max_length=70, primary_key=True)
     unit_name = models.CharField(max_length=70, null=False, blank=False)
-    head_of_unit = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    # head_of_unit = models.ForeignKey(Employee, on_delete=models.CASCADE)
     dept_id = models.ForeignKey(Department,on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
