@@ -44,7 +44,7 @@ Markdown==3.3.6
 mysqlclient==2.1.0
 outcome==1.1.0
 packaging==21.3
-Pillow==9.0.0
+Pillow==10.0.1
 pipenv==2022.1.8
 platformdirs==2.5.0
 ply==3.11
